@@ -1,4 +1,4 @@
-#My Learning Journey
+# Learning Repository
 
 This repository tracks my learning path toward DevOps, Linux, infrastructure, automation, and cloud engineering.
 
@@ -10,6 +10,25 @@ This repository tracks my learning path toward DevOps, Linux, infrastructure, au
 - Bash scripting
 - Networking fundamentals
 
-## Long-Term Goal
+## Learning System
 
-Become a DevOps / Infrastructure / Cloud engineer and build a portfolio of practical projects.
+I track my progress using:
+
+- `progress.md` — learning log
+- `skills.md` — skill levels and proof of practice
+- topic folders — notes, commands, scripts, and mini-projects
+
+## Main Goal
+
+Build practical skills step by step and prepare for an entry-level IT role, with a long-term goal of becoming a DevOps / Infrastructure / Cloud engineer.
+
+## Repository Structure
+
+```text
+cs50/
+linux/
+git/
+bash/
+networking/
+docker/
+projects/
