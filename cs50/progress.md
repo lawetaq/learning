@@ -30,7 +30,7 @@ Current topic: before C introduction
 
 ## What was hard / unclear
 
-- Binary basics were kinda hard to understand
+- Nothing yet
 
 ## Why this matters for DevOps
 
