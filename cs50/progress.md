@@ -1,5 +1,7 @@
 # CS50 Progress
 
+### 29.05.2026 ###
+
 ## Current position
 
 Video: CS50x 2026 full course  
