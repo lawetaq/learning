@@ -6,6 +6,10 @@
 
 ## Programs written
 
+- `hello.c` — prints hello world
+- `compare.c` — compares two integers
+- `password.c` — simple password check using `strcmp`
+
 ### compare
 
 A simple program that asks for two integers and compares them.
