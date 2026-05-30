@@ -1,0 +1,13 @@
+# Compiled C binaries
+cs50/cs50-practice/hello
+cs50/cs50-practice/name
+cs50/cs50-practice/compare
+cs50/cs50-practice/password
+cs50/cs50-practice/password_attempts
+
+# C build artifacts
+*.o
+*.out
+
+# Editor temporary files
+*~
