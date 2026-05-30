@@ -1,6 +1,6 @@
 # CS50 Progress
 
-## 25.05.2026 
+## 25-05-2026 
 
 ### Current position
 
@@ -46,7 +46,7 @@ Current topic: before C introduction
 - Learn variables, types, conditions, loops, functions in C
 - Write short notes after the C section
 
-## 29.05.2026
+## 29-05-2026
 
 ### Current position
 
@@ -57,15 +57,26 @@ Current topic: C basics
 
 ### Completed so far
 
-
+- Continued learning C basics.
+- Practiced small C programs locally without the CS50 library.
+- Wrote and tested `hello.c`, `name.c`, `compare.c`, and `password.c`.
 
 ### What I understood
 
+- C programs start from `main`.
+- `scanf` can be used for basic input.
+- Strings in standard C can be represented as `char` arrays.
+- `strcmp` is needed for string comparison.
 
 ### What was hard / unclear
 
+- Standard C string handling is less convenient than CS50's `string` and `get_string`.
 
-### Why this matters fo DevOps
+### Why this matters for DevOps
 
+- Basic programming logic helps with Bash, Python, automation scripts, and debugging.
 
 ### Next
+
+- Learn loops.
+- Improve the password program with limited attempts.

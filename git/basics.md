@@ -11,10 +11,11 @@ git status
 git add <file>
 git commit -m "message"
 git push
+```
 
 ## Commands
 - git status
- Shows the curret state of repository.
+ Shows the current state of repository.
 - git add
  Prepares selected changes for the next commit.
 - git push
