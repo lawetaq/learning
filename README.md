@@ -22,10 +22,19 @@ I track my progress using:
 
 Build practical skills step by step and prepare for an entry-level IT role, with a long-term goal of becoming a DevOps / Infrastructure / Cloud engineer.
 
+## Learning Plan
+
+My current roadmap is documented in [`learning-plan.md`](learning-plan.md).
+
 ## Repository Structure
 
 ```text
 cs50/
+  progress.md
+  c-practice-summary.md
+  practice/
+    01-c-basics/
+    02-loops-functions-shapes/
 linux/
 git/
 bash/

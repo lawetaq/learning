@@ -1,5 +1,10 @@
 # C Practice Summary
 
+## Practice blocks
+
+- [`01-c-basics`](practice/01-c-basics/) — basic C syntax, input, conditions, strings
+- [`02-loops-functions-shapes`](practice/02-loops-functions-shapes/) — loops, functions, nested loops, Mario-style shapes
+
 ## Date
 
 2026-05-29

@@ -1,9 +1,21 @@
-# Compiled C binaries
-cs50/cs50-practice/hello
-cs50/cs50-practice/name
-cs50/cs50-practice/compare
-cs50/cs50-practice/password
-cs50/cs50-practice/password_attempts
+# Compiled C binaries in CS50 practice folders
+cs50/practice/**/hello
+cs50/practice/**/name
+cs50/practice/**/compare
+cs50/practice/**/password
+cs50/practice/**/counter
+cs50/practice/**/meow
+cs50/practice/**/password_attempts
+cs50/practice/**/meow_function
+cs50/practice/**/column
+cs50/practice/**/row
+cs50/practice/**/square
+cs50/practice/**/square_function
+cs50/practice/**/rectangle
+cs50/practice/**/rectangle_function
+cs50/practice/**/mario_stairs
+cs50/practice/**/better_mario_stairs
+cs50/practice/**/mario_pyramid
 
 # C build artifacts
 *.o

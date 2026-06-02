@@ -1,0 +1,18 @@
+# CS50 Learning Notes and Practice
+
+This folder contains my CS50x learning notes, C practice programs, and progress summaries.
+
+## Contents
+
+- `progress.md` — chronological CS50 learning progress
+- `c-practice-summary.md` — technical summary of C practice
+- `practice/` — small C programs grouped by topic
+
+## Practice Blocks
+
+- `practice/01-c-basics/` — basic C syntax, input, conditions, and strings
+- `practice/02-loops-functions-shapes/` — loops, functions, nested loops, and terminal shapes
+
+## Notes
+
+I practice locally on Nobara Linux using standard C instead of the CS50 library where possible.
