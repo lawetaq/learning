@@ -25,5 +25,6 @@
 | CS50 / C | C basics | 2 | Wrote and tested small C programs with variables, input, conditions, loops, and functions | Practice arrays and strings |
 | CS50 / C | C loops | 2 | Created counter, meow, column, row, square, rectangle, and stairs programs | Practice nested loops more |
 | CS50 / C | C functions | 2 | Used helper functions like `print_row`, `print_left_stairs`, and `print_right_stairs` | Learn function prototypes |
-| CS50 / C | C input validation | 1 | Used `do while` for positive integers and valid direction input | Learn safer `scanf` handling |
-| CS50 / C | Nested loops | 2 | Built square, rectangle, and Mario-style stairs | Build full Mario pyramid |
+| CS50 / C | CS50 Mario pyramid | 2 | Built `mario_pyramid.c` using nested loops, spaces, hashes, and height validation | Refactor using helper functions |
+| CS50 / C | C input validation | 2 | Used `do while` to validate height from `1` to `8` and direction input | Learn safer `scanf` handling |
+| CS50 / C | Nested loops | 2 | Built square, rectangle, stairs, and CS50-style Mario pyramid | Practice more complex patterns |

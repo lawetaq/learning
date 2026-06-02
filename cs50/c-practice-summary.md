@@ -160,6 +160,7 @@ I can now write, compile, and test small standard C programs using:
 * `rectangle_function.c` — prints a rectangle using a helper function
 * `mario_stairs.c` — prints left or right Mario-style stairs
 * `better_mario_stairs.c` — improved stairs program with helper functions and direction validation
+* `mario_pyramid.c` — prints a CS50-style double pyramid with height validation from `1` to `8`
 
 ### New concepts practiced
 
@@ -191,6 +192,30 @@ hashes = row + 1
 * `dir == 'l' || 'L'` is incorrect because `'L'` alone is always true.
 * The correct form is `dir == 'l' || dir == 'L'`.
 
+### Final exercise: `mario_pyramid.c`
+
+I completed a CS50-style Mario double pyramid program in standard C.
+
+The program combines the main ideas from this practice block:
+
+* positive integer input;
+* range validation from `1` to `8`;
+* nested loops;
+* spaces and hashes;
+* fixed gap between pyramid halves;
+* formatted terminal output.
+
+Example:
+
+```text
+Enter height: 3
+  #  #
+ ##  ##
+###  ###
+```
+
+This exercise became the final task for the current loops, nested loops, functions, and simple shapes practice block.
+
 ### Current practice status
 
 I can now write and test small C programs using:
@@ -207,8 +232,7 @@ I can now write and test small C programs using:
 
 ### Next practice goals
 
-* full CS50-style Mario pyramid;
-* height validation from `1` to `8`;
-* safer `scanf` input handling;
-* function prototypes;
-* arrays and strings.
+- refactor `mario_pyramid.c` using helper functions;
+- improve input safety by checking the return value of `scanf`;
+- learn function prototypes;
+- continue with arrays and strings.

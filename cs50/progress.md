@@ -276,6 +276,7 @@ Main focus: loops, functions, nested loops, input validation, and simple termina
   * `rectangle_function.c`
   * `mario_stairs.c`
   * `better_mario_stairs.c`
+  * `mario_pyramid.c`
 * Practiced compiling and running programs with `make`.
 * Continued using VS Code, terminal, and the GitHub learning repository.
 
@@ -385,6 +386,42 @@ Practiced:
 * using `||` to accept multiple valid choices;
 * moving larger logic into helper functions.
 
+#### `mario_pyramid.c`
+
+A CS50-style Mario pyramid program written in standard C.
+
+The program asks the user for a height and prints a double pyramid:
+
+```text
+Enter height: 5
+    #  #
+   ##  ##
+  ###  ###
+ ####  ####
+#####  #####
+```
+
+The program validates height and accepts only values from `1` to `8`.
+
+Practiced:
+
+* nested loops;
+* input validation with `do while`;
+* using `||` to reject values outside an allowed range;
+* printing spaces before hashes;
+* printing a fixed gap between pyramid halves;
+* building each line step by step from left to right.
+
+Important formulas:
+
+```text
+spaces = height - row - 1
+hashes = row + 1
+gap = 2 spaces
+```
+
+This program completed the current loops, functions, and simple shapes practice block.
+
 ### Important logic learned
 
 For a left staircase, each row prints:
@@ -463,8 +500,6 @@ I can now write small standard C programs using:
 
 ### Next
 
-* Create a full CS50-style Mario pyramid.
-* Add a height limit, for example accepting only values from `1` to `8`.
 * Improve input safety by checking the return value of `scanf`.
 * Learn function prototypes so helper functions can be placed below `main`.
 * Continue with arrays and strings after loop/function practice feels stable.
