@@ -256,3 +256,215 @@ strcmp(...)
 * Learn function prototypes so custom functions can be placed below `main`.
 * Continue toward CS50-style Mario exercises.
 
+## 2026-06-01 — 2026-06-02
+
+### Current position
+
+Continued practicing C after the early C section of CS50x.
+Main focus: loops, functions, nested loops, input validation, and simple terminal-based shapes.
+
+### Completed so far
+
+* Practiced more standard C without using the CS50 library.
+* Wrote and tested several small C programs:
+
+  * `column.c`
+  * `row.c`
+  * `square.c`
+  * `square_function.c`
+  * `rectangle.c`
+  * `rectangle_function.c`
+  * `mario_stairs.c`
+  * `better_mario_stairs.c`
+* Practiced compiling and running programs with `make`.
+* Continued using VS Code, terminal, and the GitHub learning repository.
+
+### Topics practiced
+
+* `for` loops
+* `do while` loops
+* nested loops
+* integer input with `scanf("%i", &variable)`
+* character input with `scanf(" %c", &character)`
+* `if / else if / else`
+* logical OR: `||`
+* logical AND: `&&`
+* helper functions
+* function parameters
+* local variables and scope
+* simple input validation
+* drawing shapes in the terminal
+
+### Programs written
+
+#### `column.c`
+
+A program that asks for a height and prints a vertical column of `#`.
+
+Practiced:
+
+* validating positive integer input;
+* using a `for` loop to print one line per iteration.
+
+#### `row.c`
+
+A program that asks for a width and prints one horizontal row of `#`.
+
+Practiced:
+
+* printing characters without `\n` inside the loop;
+* printing one final newline after the row is complete.
+
+#### `square.c`
+
+A program that asks for a size and prints a square.
+
+Practiced:
+
+* nested loops;
+* outer loop for rows;
+* inner loop for columns.
+
+#### `square_function.c`
+
+A rewritten square program using a helper function:
+
+```c
+void print_row(int width)
+```
+
+Practiced:
+
+* creating a custom function with a parameter;
+* passing a value from `main` into another function;
+* keeping `main` cleaner.
+
+#### `rectangle.c`
+
+A program that asks for height and width separately and prints a rectangle.
+
+Practiced:
+
+* using separate variables for rows and columns;
+* nested loops with different limits.
+
+#### `rectangle_function.c`
+
+A rewritten rectangle program using a helper function to print each row.
+
+Practiced:
+
+* separating program responsibilities;
+* using `main` for input and flow control;
+* using a helper function for repeated row printing.
+
+#### `mario_stairs.c`
+
+A Mario-style staircase program where the user chooses left or right direction.
+
+Practiced:
+
+* reading a character with `scanf(" %c", &dir)`;
+* using a space before `%c` to skip leftover whitespace;
+* handling lowercase and uppercase input;
+* drawing left and right staircases with nested loops.
+
+#### `better_mario_stairs.c`
+
+An improved staircase program using separate helper functions:
+
+```c
+void print_left_stairs(int height)
+void print_right_stairs(int height)
+```
+
+Practiced:
+
+* validating character input with a `do while` loop;
+* using `&&` to reject invalid choices;
+* using `||` to accept multiple valid choices;
+* moving larger logic into helper functions.
+
+### Important logic learned
+
+For a left staircase, each row prints:
+
+```text
+hashes = row + 1
+```
+
+For a right staircase, each row prints spaces first, then hashes:
+
+```text
+spaces = height - row - 1
+hashes = row + 1
+```
+
+This creates a right-aligned staircase with a consistent total width.
+
+### Mistakes fixed
+
+* Forgot `&` in `scanf("%i", &height)`.
+* Wrote `int main` instead of `int main(void)`.
+* Forgot semicolons after statements.
+* Confused `=` with `==`.
+* Used incorrect OR logic:
+
+```c
+dir == 'l' || 'L'
+```
+
+Correct version:
+
+```c
+dir == 'l' || dir == 'L'
+```
+
+* Incremented the wrong variable inside a nested loop.
+* Tried to use a variable inside a function where it was not in scope.
+* Misunderstood that function parameters are local to the function.
+* Observed that `scanf("%i", &size)` can behave badly when the user enters letters instead of numbers.
+
+### What I understood
+
+* Nested loops are useful for drawing two-dimensional shapes.
+* The outer loop usually controls rows.
+* The inner loop usually controls columns.
+* Functions do not automatically see variables from other functions.
+* Values must be passed into functions as arguments.
+* Helper functions make larger programs easier to read.
+* `scanf(" %c", &dir)` is useful for character input because the space before `%c` skips leftover whitespace.
+* Simple `scanf` input validation works for normal input, but invalid types like letters can require safer handling later.
+
+### Why this matters for DevOps
+
+* Loops and functions are core building blocks for Bash and Python automation.
+* Input validation is useful for writing safer scripts.
+* Understanding scope and parameters helps with reading and writing structured automation tools.
+* Breaking programs into helper functions builds habits that will matter later in scripts, backend basics, and infrastructure tooling.
+
+### Current status
+
+I can now write small standard C programs using:
+
+* variables;
+* integer input;
+* character input;
+* `printf`;
+* `scanf`;
+* `if / else`;
+* `for`;
+* `do while`;
+* nested loops;
+* helper functions;
+* function parameters;
+* simple input validation;
+* terminal-based shape drawing.
+
+### Next
+
+* Create a full CS50-style Mario pyramid.
+* Add a height limit, for example accepting only values from `1` to `8`.
+* Improve input safety by checking the return value of `scanf`.
+* Learn function prototypes so helper functions can be placed below `main`.
+* Continue with arrays and strings after loop/function practice feels stable.

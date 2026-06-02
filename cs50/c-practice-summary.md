@@ -148,3 +148,67 @@ I can now write, compile, and test small standard C programs using:
 * function prototypes;
 * CS50-style Mario exercises.
 
+## 2026-06-01 — 2026-06-02 — Shapes, nested loops, and functions
+
+### Programs written
+
+* `column.c` — prints a vertical column of `#`
+* `row.c` — prints a horizontal row of `#`
+* `square.c` — prints a square using nested loops
+* `square_function.c` — prints a square using a helper function
+* `rectangle.c` — prints a rectangle using separate height and width
+* `rectangle_function.c` — prints a rectangle using a helper function
+* `mario_stairs.c` — prints left or right Mario-style stairs
+* `better_mario_stairs.c` — improved stairs program with helper functions and direction validation
+
+### New concepts practiced
+
+* nested loops;
+* shape drawing in terminal;
+* helper functions with parameters;
+* local variables and function scope;
+* `scanf(" %c", &dir)` for character input;
+* logical OR `||`;
+* logical AND `&&`;
+* character input validation;
+* separating program logic into smaller functions.
+
+### Important notes
+
+* In shape programs, the outer loop usually controls rows.
+* The inner loop usually controls columns.
+* A left staircase can be built with `row + 1` hashes.
+* A right staircase needs spaces before hashes.
+* For a right staircase:
+
+```text
+spaces = height - row - 1
+hashes = row + 1
+```
+
+* A function does not automatically access variables from `main`.
+* Values should be passed to functions as parameters.
+* `dir == 'l' || 'L'` is incorrect because `'L'` alone is always true.
+* The correct form is `dir == 'l' || dir == 'L'`.
+
+### Current practice status
+
+I can now write and test small C programs using:
+
+* `for` loops;
+* `do while` loops;
+* nested loops;
+* integer input;
+* character input;
+* helper functions;
+* function parameters;
+* simple validation;
+* terminal-based shapes.
+
+### Next practice goals
+
+* full CS50-style Mario pyramid;
+* height validation from `1` to `8`;
+* safer `scanf` input handling;
+* function prototypes;
+* arrays and strings.
