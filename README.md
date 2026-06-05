@@ -41,5 +41,6 @@ bash/
 networking/
 docker/
 projects/
+  self-hosted-vpn/
 virtualization/
 ```

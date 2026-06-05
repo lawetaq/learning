@@ -74,3 +74,26 @@
 - Add height validation from `1` to `8`.
 - Learn function prototypes.
 - Continue toward arrays and strings.
+
+## 2026-06-04
+
+### Done
+
+- Set up the first self-hosted VPN on a Debian 12 VPS.
+- Practiced SSH access and basic VPS administration.
+- Tried manual Xray + VLESS + Reality deployment.
+- Switched to AmneziaVPN after client-side routing issues.
+- Successfully connected Linux desktop and iPhone to the VPN.
+
+### Practiced
+
+- VPS management
+- SSH
+- VPN deployment
+- troubleshooting client-side routing
+- comparing manual and automated deployment approaches
+
+### Next
+
+- Document the project in `projects/self-hosted-vpn/`.
+- Later learn more about WireGuard, routing, firewall rules, and basic VPS hardening.

@@ -28,3 +28,6 @@
 | CS50 / C | CS50 Mario pyramid | 2 | Built `mario_pyramid.c` using nested loops, spaces, hashes, and height validation | Refactor using helper functions |
 | CS50 / C | C input validation | 2 | Used `do while` to validate height from `1` to `8` and direction input | Learn safer `scanf` handling |
 | CS50 / C | Nested loops | 2 | Built square, rectangle, stairs, and CS50-style Mario pyramid | Practice more complex patterns |
+| Infrastructure | VPS basics | 1 | Rented and accessed a Debian 12 VPS via SSH | Learn basic server hardening |
+| Infrastructure | Self-hosted VPN | 1 | Deployed AmneziaVPN / AmneziaWG on a VPS and connected Linux + iPhone | Learn WireGuard basics |
+| Networking | VPN troubleshooting | 1 | Tested VLESS/Reality, Hiddify, Nekoray, and AmneziaVPN routing behavior | Study routing, TUN mode, and firewall basics |
