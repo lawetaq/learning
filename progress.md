@@ -97,3 +97,64 @@
 
 - Document the project in `projects/self-hosted-vpn/`.
 - Later learn more about WireGuard, routing, firewall rules, and basic VPS hardening.
+
+## 2026-06-05
+
+### Done
+
+* Continued working with the first Debian 12 VPS as a self-hosting and DevOps learning server.
+* Preserved the existing AmneziaWG VPN container.
+* Practiced Docker basics with a temporary nginx container.
+* Installed and configured Uptime Kuma as the first real self-hosted monitoring service.
+* Moved Uptime Kuma from public access to local-only access on `127.0.0.1:3001`.
+* Set up SSH tunnel access for Uptime Kuma.
+* Created Uptime Kuma data backups and documented restore logic.
+* Created `/opt/selfhost` directory structure for future self-hosted services.
+* Installed Docker Compose v1 from Debian packages.
+* Installed and configured `fail2ban` for SSH protection.
+* Checked SSH logs and confirmed automated bot login attempts.
+* Verified that no unauthorized SSH logins were found.
+
+### Practiced
+
+* VPS administration
+* SSH
+* Docker containers
+* Docker port mapping
+* bind mounts
+* local-only port binding
+* SSH tunnels
+* Uptime Kuma setup
+* container recovery commands
+* backup and restore logic
+* Docker Compose basics
+* fail2ban configuration
+* SSH log inspection
+* basic server security thinking
+
+### Problems
+
+* Uptime Kuma password issue required reset from inside the container.
+* Uptime Kuma was initially exposed publicly on port `3001`.
+* `fail2ban` initially failed because it could not find the default SSH log file.
+* SSH logs showed automated bot login attempts.
+
+### Solved / Understood
+
+* Uptime Kuma password can be reset using container CLI recovery tools.
+* Admin panels should not be exposed directly to the public internet unless there is a clear reason and proper protection.
+* Docker ports can be bound to `127.0.0.1` to make a service local-only.
+* SSH tunnels can be used to access local-only services securely.
+* `fail2ban` can use the `systemd` backend when default log files are unavailable.
+* Public VPS servers are scanned by bots very quickly.
+* `127.0.0.1` inside a container is not always the same as `127.0.0.1` on the host.
+
+### Next
+
+* Add sanitized documentation to `projects/vps-selfhost-lab/`.
+* Create a small personal static site.
+* Learn Docker Compose with a safe test service.
+* Improve backups and copy them off the VPS later.
+* Add Uptime Kuma notifications.
+* Configure SSH keys after PC reinstall/new SSD.
+* Later add domain, DNS, reverse proxy, and HTTPS.

@@ -20,7 +20,6 @@
 | Documentation | Markdown basics | 2 | Created README, progress, and skills files | Keep writing notes |
 | Linux | Linux basics | 1 | Previous Linux practice | Systematize notes |
 | Bash | Bash scripting | 0 | — | Write first script |
-| Docker | Docker basics | 0 | — | Run first container later |
 | CS50 / C | CS50 basics | 2 | Watched intro, Scratch, and early C section | Continue C section |
 | CS50 / C | C basics | 2 | Wrote and tested small C programs with variables, input, conditions, loops, and functions | Practice arrays and strings |
 | CS50 / C | C loops | 2 | Created counter, meow, column, row, square, rectangle, and stairs programs | Practice nested loops more |
@@ -28,6 +27,12 @@
 | CS50 / C | CS50 Mario pyramid | 2 | Built `mario_pyramid.c` using nested loops, spaces, hashes, and height validation | Refactor using helper functions |
 | CS50 / C | C input validation | 2 | Used `do while` to validate height from `1` to `8` and direction input | Learn safer `scanf` handling |
 | CS50 / C | Nested loops | 2 | Built square, rectangle, stairs, and CS50-style Mario pyramid | Practice more complex patterns |
-| Infrastructure | VPS basics | 1 | Rented and accessed a Debian 12 VPS via SSH | Learn basic server hardening |
-| Infrastructure | Self-hosted VPN | 1 | Deployed AmneziaVPN / AmneziaWG on a VPS and connected Linux + iPhone | Learn WireGuard basics |
 | Networking | VPN troubleshooting | 1 | Tested VLESS/Reality, Hiddify, Nekoray, and AmneziaVPN routing behavior | Study routing, TUN mode, and firewall basics |
+| Infrastructure | VPS basics               |     2 | Managed a Debian 12 VPS via SSH and documented server state            | Configure SSH keys and basic hardening       |
+| Infrastructure | Self-hosting basics      |     2 | Created `/opt/selfhost` structure and deployed first services          | Add personal static site                     |
+| Docker         | Docker basics            |     2 | Ran nginx and Uptime Kuma containers with port mapping and bind mounts | Learn Docker Compose through a test service  |
+| Docker         | Docker networking basics |     1 | Practiced public and local-only port bindings                          | Study Docker networks and gateway behavior   |
+| Monitoring     | Uptime Kuma              |     2 | Deployed Uptime Kuma and added basic monitors                          | Add notifications and monitor more services  |
+| Security       | SSH security basics      |     1 | Installed fail2ban and checked SSH logs for bot attempts               | Configure SSH keys and review firewall later |
+| Backups        | Basic service backups    |     1 | Created Uptime Kuma tar backups and documented restore logic           | Test restore and copy backups off-server     |
+| Networking     | SSH tunneling            |     2 | Accessed local-only Uptime Kuma through SSH tunnel                     | Use tunnels for admin panels when needed     |

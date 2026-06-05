@@ -42,5 +42,6 @@ networking/
 docker/
 projects/
   self-hosted-vpn/
+  vps-selfhost-lab/
 virtualization/
 ```
