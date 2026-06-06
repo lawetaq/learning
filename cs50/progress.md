@@ -503,3 +503,228 @@ I can now write small standard C programs using:
 * Improve input safety by checking the return value of `scanf`.
 * Learn function prototypes so helper functions can be placed below `main`.
 * Continue with arrays and strings after loop/function practice feels stable.
+
+## 2026-06-06
+
+### Current position
+
+Video: CS50x 2026 full course
+Watched from: 04:27:58
+Watched to: 06:53:32
+Topic: Arrays
+
+### Completed so far
+
+* Continued CS50x and watched the Arrays lecture section.
+* Practiced the same concepts in standard C without using the CS50 library.
+* Created a new practice block for arrays, strings, search, command-line arguments, and Caesar cipher.
+* Wrote and tested several C programs:
+
+  * `scores.c`
+  * `scores_dynamic.c`
+  * `string_length.c`
+  * `string_length_fgets.c`
+  * `uppercase.c`
+  * `greet_args.c`
+  * `search_score.c`
+  * `search_name.c`
+  * `caesar_simple.c`
+
+### Topics practiced
+
+* integer arrays;
+* variable-length arrays;
+* array indexing;
+* loops over arrays;
+* calculating sum and average;
+* floating-point division;
+* strings as `char` arrays;
+* null terminator `'\0'`;
+* reading strings with `scanf("%99s", text)`;
+* reading full lines with `fgets`;
+* difference between `scanf` and `fgets`;
+* manual string length calculation;
+* uppercase conversion using character arithmetic;
+* command-line arguments with `argc` and `argv`;
+* linear search;
+* arrays of strings;
+* string comparison with `strcmp`;
+* simple Caesar cipher;
+* modulo operator `%`;
+* handling lowercase and uppercase letters separately.
+
+### Programs written
+
+#### `scores.c`
+
+A program that stores three integer scores in an array and calculates their average.
+
+Practiced:
+
+* fixed-size integer arrays;
+* array indexes starting at `0`;
+* accessing elements with `scores[i]`;
+* using `&scores[i]` with `scanf`;
+* summing array elements;
+* avoiding integer division with `3.0`;
+* formatted floating-point output with `%.2f`.
+
+#### `scores_dynamic.c`
+
+A program where the user chooses how many scores to enter.
+
+Practiced:
+
+* asking the user for array size;
+* validating that `n >= 1`;
+* creating a variable-length array with `int scores[n]`;
+* understanding that valid indexes are `0` to `n - 1`;
+* using `(float) n` to force floating-point division.
+
+#### `string_length.c`
+
+A program that calculates the length of a word without using `strlen`.
+
+Practiced:
+
+* strings as `char` arrays;
+* null terminator `'\0'`;
+* manually walking through a string;
+* understanding that `scanf("%s")` reads only one word and stops at spaces.
+
+#### `string_length_fgets.c`
+
+An improved string length program that reads a full line with spaces using `fgets`.
+
+Practiced:
+
+* reading full lines;
+* handling the newline character `'\n'`;
+* counting characters until `'\0'` or `'\n'`;
+* understanding the difference between `scanf("%s")` and `fgets`.
+
+#### `uppercase.c`
+
+A program that reads a full line and prints it in uppercase.
+
+Practiced:
+
+* iterating through a `char` array;
+* checking whether a character is between `'a'` and `'z'`;
+* converting lowercase letters to uppercase manually;
+* preserving spaces, punctuation, and already-uppercase letters.
+
+#### `greet_args.c`
+
+A program that uses command-line arguments.
+
+Practiced:
+
+* `int main(int argc, char *argv[])`;
+* understanding `argc`;
+* understanding `argv`;
+* checking the correct number of arguments;
+* using `argv[1]` as the first user-provided argument.
+
+#### `search_score.c`
+
+A program that searches for a number in an integer array.
+
+Practiced:
+
+* linear search;
+* comparing each array element with a target;
+* using a `found` flag;
+* using `break` after finding the target;
+* printing `Not found` only after checking the whole array.
+
+#### `search_name.c`
+
+A program that searches for a name in an array of strings.
+
+Practiced:
+
+* arrays of strings;
+* basic understanding of `char *names[]`;
+* reading a target name into `char target[100]`;
+* comparing strings with `strcmp(names[i], target) == 0`.
+
+#### `caesar_simple.c`
+
+A simple Caesar cipher program.
+
+Practiced:
+
+* iterating through a string;
+* checking lowercase and uppercase ranges;
+* shifting letters using character arithmetic;
+* using `% 26` to wrap around the alphabet;
+* preserving spaces, punctuation, and symbols.
+
+This was the strongest final exercise of this block because it combined arrays, strings, loops, character arithmetic, conditions, and formatted output.
+
+### Important concepts learned
+
+* Arrays store multiple values of the same type.
+* Array indexes start at `0`.
+* If an array has size `n`, the last valid index is `n - 1`.
+* `scores[i]` accesses one element, while `scores` refers to the array.
+* In C, strings are arrays of characters ending with `'\0'`.
+* `scanf("%99s", text)` reads one word and stops at spaces.
+* `fgets(text, sizeof(text), stdin)` reads a full line and may store `'\n'`.
+* Strings cannot be compared with `==`; `strcmp(...) == 0` is needed.
+* `argc` stores the number of command-line arguments.
+* `argv` stores the argument strings.
+* Linear search checks elements one by one until a match is found or the array ends.
+* Caesar cipher logic uses character arithmetic and modulo.
+
+### Common mistakes fixed
+
+* Confused the whole array with one array element.
+* Used `scores` where `scores[i]` was needed.
+* Tried to use `scores[n]` as if it were the last element.
+* Forgot that the last valid index is `n - 1`.
+* Used `&target` incorrectly with `char target[100]`.
+* Tried to compare strings without `strcmp`.
+* Declared an array of strings incorrectly.
+* Put `Not found` inside the search loop too early.
+* Used `=` instead of `==`.
+* Forgot that `scanf("%s")` reads only one word.
+* Saw floating-point output like `59.333332` and learned to format it with `%.2f`.
+
+### Why this matters for DevOps
+
+* Arrays and loops are useful for processing lists of values, logs, files, arguments, and script input.
+* Command-line arguments are important because many DevOps tools are CLI-based.
+* Search logic helps with troubleshooting, parsing output, and understanding how programs process data.
+* String handling is important for Bash, Python, configs, logs, environment variables, and automation.
+* Caesar cipher practice builds confidence with character processing and transformations.
+
+### Current status
+
+I can now write small standard C programs using:
+
+* fixed-size arrays;
+* variable-length arrays;
+* loops over arrays;
+* `char` arrays;
+* `fgets`;
+* `scanf`;
+* manual string length calculation;
+* string search with `strcmp`;
+* arrays of strings;
+* command-line arguments;
+* linear search;
+* simple Caesar cipher logic.
+
+### Next
+
+* Practice debugging with compiler flags:
+
+  * `-Wall`
+  * `-Wextra`
+  * `-Werror`
+* Learn to read compiler warnings and errors more confidently.
+* Improve input safety by checking the return value of `scanf`.
+* Refactor some programs into helper functions.
+* Continue with the next CS50 topic after debugging practice.

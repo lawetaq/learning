@@ -27,6 +27,11 @@
 | CS50 / C | CS50 Mario pyramid | 2 | Built `mario_pyramid.c` using nested loops, spaces, hashes, and height validation | Refactor using helper functions |
 | CS50 / C | C input validation | 2 | Used `do while` to validate height from `1` to `8` and direction input | Learn safer `scanf` handling |
 | CS50 / C | Nested loops | 2 | Built square, rectangle, stairs, and CS50-style Mario pyramid | Practice more complex patterns |
+| CS50 / C | C arrays | 2 | Wrote `scores.c` and `scores_dynamic.c` using fixed-size and variable-length arrays | Practice arrays with helper functions |
+| CS50 / C | C strings | 2 | Wrote string length and uppercase programs using `char` arrays and `fgets` | Continue deeper string handling |
+| CS50 / C | Command-line arguments | 1 | Wrote `greet_args.c` using `argc` and `argv` | Practice more CLI-style programs |
+| CS50 / C | Linear search | 2 | Wrote `search_score.c` and `search_name.c` | Compare with binary search later |
+| CS50 / C | Caesar cipher | 2 | Built `caesar_simple.c` with character arithmetic and `% 26` | Refactor and improve input handling |
 | Networking | VPN troubleshooting | 1 | Tested VLESS/Reality, Hiddify, Nekoray, and AmneziaVPN routing behavior | Study routing, TUN mode, and firewall basics |
 | Infrastructure | VPS basics               |     2 | Managed a Debian 12 VPS via SSH and documented server state            | Configure SSH keys and basic hardening       |
 | Infrastructure | Self-hosting basics      |     2 | Created `/opt/selfhost` structure and deployed first services          | Add personal static site                     |

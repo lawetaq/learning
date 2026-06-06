@@ -241,3 +241,81 @@ I can now write and test small C programs using:
 - improve input safety by checking the return value of `scanf`;
 - learn function prototypes;
 - continue with arrays and strings.
+
+## 2026-06-06 — Arrays, strings, search, and Caesar cipher
+
+### Practice block
+
+Folder:
+
+```text
+practice/03-arrays-strings-search/
+```
+
+### Programs written
+
+* `scores.c` — stores three scores in an array and calculates the average
+* `scores_dynamic.c` — lets the user choose how many scores to enter
+* `string_length.c` — manually calculates the length of one word
+* `string_length_fgets.c` — calculates the length of a full line read with `fgets`
+* `uppercase.c` — converts lowercase letters to uppercase manually
+* `greet_args.c` — uses command-line arguments with `argc` and `argv`
+* `search_score.c` — searches for a number in an integer array
+* `search_name.c` — searches for a name in an array of strings
+* `caesar_simple.c` — implements a simple Caesar cipher
+
+### New concepts practiced
+
+* fixed-size arrays;
+* variable-length arrays;
+* array indexing;
+* loops over arrays;
+* sum and average calculation;
+* floating-point division;
+* strings as `char` arrays;
+* null terminator `'\0'`;
+* `scanf("%99s", text)`;
+* `fgets`;
+* manual string length calculation;
+* character arithmetic;
+* command-line arguments;
+* linear search;
+* arrays of strings;
+* `strcmp`;
+* modulo operator `%`;
+* Caesar cipher logic.
+
+### Important notes
+
+* Array indexes start at `0`.
+* If an array has size `n`, the last valid index is `n - 1`.
+* `scores[i]` accesses a single element.
+* C strings are `char` arrays ending with `'\0'`.
+* `scanf("%s")` reads one word.
+* `fgets` can read a full line with spaces.
+* `strcmp(...) == 0` means two strings are equal.
+* `argv[0]` is the program name.
+* `argv[1]` is the first user-provided argument.
+* Linear search must check the whole array before deciding that something was not found.
+* Caesar cipher uses modulo `% 26` to wrap around the alphabet.
+
+### Current practice status
+
+I can now write and test small C programs using:
+
+* arrays;
+* loops over arrays;
+* strings as `char` arrays;
+* full-line input with `fgets`;
+* command-line arguments;
+* linear search;
+* arrays of strings;
+* simple character transformations;
+* Caesar cipher logic.
+
+### Next practice goals
+
+* compiler warnings and debugging flags;
+* safer `scanf` handling;
+* helper function refactoring;
+* more practice with arrays and strings.

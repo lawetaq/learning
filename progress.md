@@ -158,3 +158,66 @@
 * Add Uptime Kuma notifications.
 * Configure SSH keys after PC reinstall/new SSD.
 * Later add domain, DNS, reverse proxy, and HTTPS.
+
+## 2026-06-06
+
+### Done
+
+* Continued CS50x and watched the Arrays lecture section from `04:27:58` to `06:53:32`.
+* Practiced arrays, strings, command-line arguments, linear search, and Caesar cipher in standard C.
+* Created a new CS50 practice block:
+
+  * `cs50/practice/03-arrays-strings-search/`
+* Wrote and tested several C programs:
+
+  * `scores.c`
+  * `scores_dynamic.c`
+  * `string_length.c`
+  * `string_length_fgets.c`
+  * `uppercase.c`
+  * `greet_args.c`
+  * `search_score.c`
+  * `search_name.c`
+  * `caesar_simple.c`
+
+### Practiced
+
+* integer arrays
+* variable-length arrays
+* array indexing
+* loops over arrays
+* `char` arrays
+* `fgets`
+* `scanf`
+* manual string length calculation
+* command-line arguments
+* linear search
+* arrays of strings
+* `strcmp`
+* Caesar cipher logic
+
+### Problems
+
+* Confused the whole array with one array element.
+* Tried to use `scores[n]` as if it were the last valid element.
+* Used `&target` incorrectly with `char target[100]`.
+* Put `Not found` inside a search loop too early.
+* Forgot that `scanf("%s")` reads only one word.
+
+### Solved / Understood
+
+* Array indexes start at `0`.
+* If an array has size `n`, the last valid index is `n - 1`.
+* Strings in C are `char` arrays ending with `'\0'`.
+* `fgets` can read full lines with spaces.
+* Strings should be compared with `strcmp`, not `==`.
+* Linear search should only print `Not found` after checking all elements.
+* Caesar cipher can be implemented with character arithmetic and `% 26`.
+
+### Next
+
+* Practice compiler warnings with `-Wall -Wextra -Werror`.
+* Improve input safety by checking the return value of `scanf`.
+* Refactor selected programs into helper functions.
+* Continue to the next CS50 topic.
+

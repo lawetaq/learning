@@ -35,6 +35,7 @@ cs50/
   practice/
     01-c-basics/
     02-loops-functions-shapes/
+    03-arrays-strings-search/
 linux/
 git/
 bash/
