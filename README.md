@@ -44,5 +44,6 @@ docker/
 projects/
   self-hosted-vpn/
   vps-selfhost-lab/
+  local-ai-agent-sandbox/
 virtualization/
 ```

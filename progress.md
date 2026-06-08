@@ -279,3 +279,62 @@
 * Improve backup workflow and copy backups off the VPS.
 * Later configure domain, DNS, reverse proxy, and HTTPS.
 * Later create a normal sudo user and disable direct root SSH login.
+
+## 2026-06-08
+
+### Done
+
+* Tested a local self-hosted AI agent workflow using Odysseus, Docker Compose, Ollama, and local models.
+* Installed and verified Docker / Docker Compose locally.
+* Installed Odysseus as a local Docker Compose stack.
+* Installed and tested Ollama as a systemd service.
+* Tested local models:
+
+  * `qwen2.5:7b`
+  * `qwen2.5-coder:7b`
+* Connected Odysseus to Ollama through `host.docker.internal:11434`.
+* Checked local network exposure after binding Ollama to `0.0.0.0:11434`.
+* Added a firewalld rich rule to block LAN access to Ollama.
+* Created a safe Git sandbox folder:
+
+  * `ai-agent-playground/`
+* Mounted only the sandbox folder into Odysseus instead of giving access to the full home directory or full repository.
+* Tested AI agent file editing.
+* Compared `qwen2.5:7b` and `qwen2.5-coder:7b` for agentic file editing.
+* Committed the successful sandbox edit.
+
+### Practiced
+
+* Docker Compose
+* local self-hosted services
+* Ollama local models
+* systemd service checks
+* local-only web UIs
+* Docker-to-host connectivity
+* firewall checks
+* firewalld rich rules
+* safe bind mounts
+* Git as a safety layer for AI-generated edits
+* sandboxing an AI file-editing agent
+
+### Problems
+
+* `qwen2.5:7b` duplicated README sections and produced messy edits.
+* Ollama became reachable from the local LAN after listening on `0.0.0.0:11434`.
+* Broad filesystem access for an AI agent would be risky.
+
+### Solved / Understood
+
+* `qwen2.5-coder:7b` performed better for code and markdown editing than the general chat model.
+* Local models still require careful testing; local does not automatically mean reliable.
+* Docker bind mounts should be limited to a safe sandbox first.
+* Git makes it possible to review and revert AI-generated file changes.
+* Firewall rules should be checked whenever a service listens on `0.0.0.0`.
+* AI agents should not be given access to SSH keys, `.env` files, private notes, or the full home directory.
+
+### Next
+
+* Document the experiment in `projects/local-ai-agent-sandbox/`.
+* Test a slightly more complex but still safe sandbox task.
+* Continue using Git to review all agent-generated changes.
+* Keep Odysseus and Ollama local-only.
