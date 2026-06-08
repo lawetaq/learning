@@ -43,7 +43,6 @@
 | Monitoring     | Uptime Kuma              |     2 | Deployed Uptime Kuma and added basic monitors                          | Add notifications and monitor more services  |
 | Security       | SSH security basics      |     1 | Installed fail2ban and checked SSH logs for bot attempts               | Configure SSH keys and review firewall later |
 | Backups        | Basic service backups    |     1 | Created Uptime Kuma tar backups and documented restore logic           | Test restore and copy backups off-server     |
-| Networking     | SSH tunneling            |     2 | Accessed local-only Uptime Kuma through SSH tunnel                     | Use tunnels for admin panels when needed     |
 | Infrastructure | SSH key authentication | 2 | Created a dedicated SSH key, configured SSH alias, and logged into VPS using the key | Back up key securely before OS reinstall |
 | Security | SSH password login hardening | 2 | Disabled password-based SSH login and verified it with `sshd -T` and forced password test | Create sudo user and later disable direct root login |
 | Monitoring | Internal service monitoring | 2 | Monitored local-only personal site from Uptime Kuma using container name | Add notifications later |
