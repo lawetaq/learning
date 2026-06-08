@@ -221,3 +221,61 @@
 * Refactor selected programs into helper functions.
 * Continue to the next CS50 topic.
 
+## 2026-06-08
+
+### Done
+
+* Improved SSH security on the Debian 12 VPS.
+* Created a dedicated SSH key for the FirstVDS VPS.
+* Added a local SSH config alias: `firstvds`.
+* Disabled password-based SSH login after confirming key-based login worked.
+* Verified final SSH settings with `sshd -T`.
+* Confirmed that password login is disabled.
+* Created the first personal static website using Docker Compose.
+* Bound the personal site to `127.0.0.1:8080` so it is local-only.
+* Accessed the personal site through an SSH tunnel.
+* Added the personal site to Uptime Kuma monitoring.
+* Connected Uptime Kuma to the personal-site Docker network.
+* Verified that Uptime Kuma can monitor the site internally using `http://personal-site:80`.
+
+### Practiced
+
+* SSH key authentication
+* SSH config aliases
+* disabling password-based SSH login
+* checking effective SSH daemon configuration with `sshd -T`
+* Docker Compose
+* nginx static site container
+* local-only port binding
+* SSH tunnels
+* Docker networks
+* container-to-container communication
+* Uptime Kuma internal monitoring
+* HTTP vs HTTPS troubleshooting
+
+### Problems
+
+* Provider SSH config file kept `PasswordAuthentication yes` active.
+* Initial override config did not disable password login.
+* Accidentally tested a plain HTTP nginx site using HTTPS.
+* Uptime Kuma could not initially monitor the local-only personal site through the host address.
+
+### Solved / Understood
+
+* Provider SSH config files can affect final SSH behavior.
+* `sshd -T` shows the effective SSH configuration.
+* Password login should only be disabled after key login is tested.
+* A plain nginx container without TLS should be checked with `http://`, not `https://`.
+* Services bound to `127.0.0.1` on the host are not always reachable from another container through the same address.
+* Docker containers can communicate by container name when connected to the same Docker network.
+* Uptime Kuma can monitor internal services without exposing them to the public internet.
+
+### Next
+
+* Update server documentation on the VPS.
+* Back up the personal-site project files.
+* Add safe personal-site configs/docs to Git later.
+* Convert Uptime Kuma from `docker run` to Docker Compose.
+* Improve backup workflow and copy backups off the VPS.
+* Later configure domain, DNS, reverse proxy, and HTTPS.
+* Later create a normal sudo user and disable direct root SSH login.

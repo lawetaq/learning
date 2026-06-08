@@ -488,3 +488,525 @@ Planned future work:
 8. Consider firewall carefully.
 9. Add domain, DNS, reverse proxy, and HTTPS later.
 10. Postpone Gitea and Vaultwarden until Docker, backups, HTTPS, and security are better understood.
+
+## 2026-06-08 — SSH Keys, Docker Compose, and Local Static Site
+
+### Goal
+
+Continue improving the VPS self-hosting lab by:
+
+* switching SSH from password login to key-based authentication;
+* disabling password-based SSH login;
+* creating the first personal static website using Docker Compose;
+* keeping internal services local-only;
+* adding the personal site to Uptime Kuma monitoring.
+
+### Starting state
+
+Before this work, the VPS already had:
+
+* Docker installed;
+* Docker Compose v1 installed;
+* AmneziaWG VPN running in Docker;
+* Uptime Kuma running locally on `127.0.0.1:3001`;
+* fail2ban enabled for SSH;
+* password-based SSH login still enabled;
+* `/opt/selfhost` project structure created;
+* Uptime Kuma backups already created.
+
+Existing important containers:
+
+```text
+amnezia-awg2   -> public VPN container
+uptime-kuma    -> local-only monitoring service
+```
+
+---
+
+### SSH key authentication
+
+A dedicated SSH key was created on the local PC for the VPS:
+
+```bash
+ssh-keygen -t ed25519 -f ~/.ssh/firstvds_ed25519 -C "firstvds-vps"
+```
+
+This created:
+
+```text
+~/.ssh/firstvds_ed25519      private key
+~/.ssh/firstvds_ed25519.pub  public key
+```
+
+Important note:
+
+* the private key must stay secret;
+* the public key can be copied to the server;
+* the private key was protected with a passphrase.
+
+The public key was copied to the VPS:
+
+```bash
+ssh-copy-id -i ~/.ssh/firstvds_ed25519.pub root@<VPS_PUBLIC_IP>
+```
+
+Key-based login was tested:
+
+```bash
+ssh -i ~/.ssh/firstvds_ed25519 root@<VPS_PUBLIC_IP>
+```
+
+A local SSH config alias was added:
+
+```sshconfig
+Host firstvds
+    HostName <VPS_PUBLIC_IP>
+    User root
+    IdentityFile ~/.ssh/firstvds_ed25519
+    IdentitiesOnly yes
+    SetEnv TERM=xterm-256color
+```
+
+After this, the VPS can be accessed with:
+
+```bash
+ssh firstvds
+```
+
+---
+
+### Disabled SSH password login
+
+Before changing SSH settings, existing SSH sessions were kept open as a safety measure.
+
+The main SSH config was backed up:
+
+```bash
+cp /etc/ssh/sshd_config /etc/ssh/sshd_config.backup.$(date +%F-%H%M)
+```
+
+Effective SSH settings were checked with:
+
+```bash
+sshd -T | grep -E 'passwordauthentication|pubkeyauthentication|permitrootlogin|kbdinteractiveauthentication'
+```
+
+A provider SSH config file was found:
+
+```text
+/etc/ssh/sshd_config.d/40-hosting.conf
+```
+
+It contained:
+
+```text
+PermitRootLogin yes
+PubkeyAuthentication yes
+PasswordAuthentication yes
+PermitEmptyPasswords no
+```
+
+The provider config was backed up:
+
+```bash
+cp /etc/ssh/sshd_config.d/40-hosting.conf /etc/ssh/sshd_config.d/40-hosting.conf.backup.$(date +%F-%H%M)
+```
+
+Password authentication was disabled:
+
+```bash
+sed -i 's/^PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config.d/40-hosting.conf
+```
+
+Configuration was checked:
+
+```bash
+sshd -t
+sshd -T | grep -E 'passwordauthentication|pubkeyauthentication|permitrootlogin|kbdinteractiveauthentication'
+```
+
+Expected final state:
+
+```text
+permitrootlogin yes
+pubkeyauthentication yes
+passwordauthentication no
+kbdinteractiveauthentication no
+```
+
+SSH was reloaded:
+
+```bash
+systemctl reload ssh
+systemctl status ssh --no-pager
+```
+
+Key login was tested successfully:
+
+```bash
+ssh firstvds
+```
+
+Password login was tested and confirmed disabled:
+
+```bash
+ssh -o PubkeyAuthentication=no -o PreferredAuthentications=password root@<VPS_PUBLIC_IP>
+```
+
+Expected result:
+
+```text
+Permission denied
+```
+
+Current SSH state:
+
+```text
+SSH public port: 22/tcp
+Root login: still enabled
+Public key login: enabled
+Password login: disabled
+fail2ban: enabled for sshd
+```
+
+Future improvement:
+
+* create a normal sudo user;
+* disable direct root SSH login later.
+
+---
+
+### SSH key backup notes
+
+The VPS now depends on the SSH key.
+
+Important local files to back up before reinstalling the local OS:
+
+```text
+~/.ssh/firstvds_ed25519
+~/.ssh/firstvds_ed25519.pub
+~/.ssh/config
+```
+
+The private key must never be uploaded, committed to Git, or shared:
+
+```text
+~/.ssh/firstvds_ed25519
+```
+
+Recommended permissions after restoring the key:
+
+```bash
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/firstvds_ed25519
+chmod 644 ~/.ssh/firstvds_ed25519.pub
+chmod 600 ~/.ssh/config
+```
+
+---
+
+### Personal static website with Docker Compose
+
+A first personal static website was created using Docker Compose.
+
+Project path:
+
+```text
+/opt/selfhost/personal-site
+```
+
+Project structure:
+
+```text
+/opt/selfhost/personal-site/
+├── html/
+│   └── index.html
+└── docker-compose.yml
+```
+
+The site is a simple static self-hosted lab page about:
+
+* VPS;
+* Docker;
+* Uptime Kuma;
+* SSH;
+* backups;
+* self-hosting practice.
+
+Docker Compose file:
+
+```yaml
+version: "3.8"
+
+services:
+  personal-site:
+    image: nginx:alpine
+    container_name: personal-site
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:80"
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+```
+
+Important port binding:
+
+```text
+127.0.0.1:8080:80
+```
+
+Meaning:
+
+```text
+VPS localhost port 8080 -> container port 80
+```
+
+The site is not directly exposed to the public internet.
+
+The site was started with:
+
+```bash
+cd /opt/selfhost/personal-site
+docker-compose up -d
+```
+
+Container status was checked:
+
+```bash
+docker ps
+ss -tulpn | grep 8080
+```
+
+Expected result:
+
+```text
+127.0.0.1:8080
+```
+
+---
+
+### HTTP vs HTTPS mistake
+
+The site was accidentally checked with HTTPS:
+
+```bash
+curl https://127.0.0.1:8080 | head
+```
+
+This returned an SSL error because nginx was serving plain HTTP, not HTTPS.
+
+Correct command:
+
+```bash
+curl http://127.0.0.1:8080 | head
+```
+
+Lesson:
+
+* HTTP and HTTPS are different protocols;
+* a plain nginx container without TLS should be checked with `http://`.
+
+---
+
+### Access through SSH tunnel
+
+The site was accessed from the local PC through SSH tunnel:
+
+```bash
+ssh -L 8080:127.0.0.1:8080 firstvds
+```
+
+Then opened locally:
+
+```text
+http://127.0.0.1:8080
+```
+
+The site opened successfully.
+
+---
+
+### Uptime Kuma monitoring for personal site
+
+At first, monitoring the site from Uptime Kuma through the host address did not work.
+
+Reason:
+
+* `personal-site` was bound to `127.0.0.1:8080` on the VPS host;
+* Uptime Kuma runs inside a Docker container;
+* `127.0.0.1` and host-local bindings behave differently from inside containers.
+
+Docker networks were checked:
+
+```bash
+docker network ls
+```
+
+Uptime Kuma was connected to the personal site Docker network:
+
+```bash
+docker network connect personal-site_default uptime-kuma
+```
+
+After that, Uptime Kuma could reach the site by container name:
+
+```text
+http://personal-site:80
+```
+
+The monitor turned green.
+
+Lesson:
+
+* container-to-container access can be done through Docker networks;
+* Docker service/container names can be used as internal hostnames on the same Docker network;
+* internal monitoring can work without exposing the service publicly.
+
+---
+
+### Current service state
+
+Current containers:
+
+```text
+amnezia-awg2    -> VPN, public UDP port
+uptime-kuma     -> monitoring, local 127.0.0.1:3001
+personal-site   -> nginx static site, local 127.0.0.1:8080
+```
+
+Current access methods:
+
+```bash
+ssh firstvds
+```
+
+Uptime Kuma:
+
+```bash
+ssh -L 3001:127.0.0.1:3001 firstvds
+```
+
+Then open:
+
+```text
+http://127.0.0.1:3001
+```
+
+Personal site:
+
+```bash
+ssh -L 8080:127.0.0.1:8080 firstvds
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8080
+```
+
+Publicly exposed services are still limited mainly to:
+
+```text
+22/tcp       SSH
+VPN UDP port AmneziaWG
+```
+
+Uptime Kuma and the personal site are local-only.
+
+---
+
+### Useful commands for personal site
+
+Go to project folder:
+
+```bash
+cd /opt/selfhost/personal-site
+```
+
+Show status:
+
+```bash
+docker-compose ps
+```
+
+Show logs:
+
+```bash
+docker-compose logs --tail=30
+```
+
+Restart:
+
+```bash
+docker-compose restart
+```
+
+Stop and remove container/network:
+
+```bash
+docker-compose down
+```
+
+Start again:
+
+```bash
+docker-compose up -d
+```
+
+---
+
+### Important lessons learned
+
+* SSH keys are safer than password login because bots cannot brute-force a disabled password login.
+* SSH private keys are not tied to hardware; they are files and must be backed up securely.
+* A passphrase protects the private key if the key file is stolen.
+* Password-based SSH login should only be disabled after key login is fully tested.
+* Provider SSH config files can affect expected SSH settings.
+* `sshd -T` is useful for checking the final effective SSH configuration.
+* Docker Compose makes service configuration easier to document and reproduce.
+* Binding a service to `127.0.0.1` keeps it local-only.
+* HTTP and HTTPS are different.
+* Docker containers have their own networking.
+* Container-to-container access can be done using Docker networks and container names.
+* Uptime Kuma can monitor internal services without exposing them publicly.
+
+---
+
+### Current final state
+
+The VPS is now in a better state:
+
+```text
+SSH:
+- key-based login works
+- password login disabled
+- fail2ban still enabled
+- root login still enabled for now
+
+Uptime Kuma:
+- local-only
+- monitored and healthy
+- accessed through SSH tunnel
+
+Personal Site:
+- first Docker Compose project
+- nginx static site
+- local-only
+- accessible through SSH tunnel
+- monitored by Uptime Kuma
+
+AmneziaWG:
+- still running
+- not modified during this work
+```
+
+### Next possible steps
+
+* Update `/opt/selfhost/docs/server-state.txt` with SSH key and personal-site information.
+* Make a small backup of the personal-site project files.
+* Put safe configs/docs into Git.
+* Convert Uptime Kuma from `docker run` to Docker Compose.
+* Improve backup workflow and copy backups to the local PC.
+* Later configure a domain, DNS, reverse proxy, and HTTPS.
+* Later create a normal sudo user and disable direct root SSH login.
+* Later configure firewall carefully.
