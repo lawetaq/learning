@@ -4,6 +4,8 @@
 
 - [`01-c-basics`](practice/01-c-basics/) — basic C syntax, input, conditions, strings
 - [`02-loops-functions-shapes`](practice/02-loops-functions-shapes/) — loops, functions, nested loops, Mario-style shapes
+- [`03-arrays-strings-search`](practice/03-arrays-strings-search/) — arrays, strings, command-line arguments, linear search, and Caesar cipher
+- [`04-algorithms`](practice/04-algorithms/) — binary search, sorting algorithms, and recursion
 
 ## Date
 
@@ -319,3 +321,75 @@ I can now write and test small C programs using:
 * safer `scanf` handling;
 * helper function refactoring;
 * more practice with arrays and strings.
+
+## 2026-06-09 — Algorithms basics
+
+### Practice block
+
+Folder:
+
+```text
+practice/04-algorithms/
+```
+
+### Programs written
+
+* `binary_search.c` — searches for a number in a sorted integer array using binary search
+* `bubble_sort.c` — sorts an integer array using bubble sort
+* `selection_sort.c` — sorts an integer array using selection sort
+* `recursion_countdown.c` — demonstrates basic recursion with a countdown function
+
+### New concepts practiced
+
+* binary search;
+* sorted arrays;
+* search boundaries;
+* middle index calculation;
+* bubble sort;
+* selection sort;
+* nested loops;
+* swapping values;
+* helper function for printing arrays;
+* recursion;
+* base case;
+* recursive case;
+* basic complexity ideas.
+
+### Important notes
+
+* Binary search only works correctly on sorted data.
+* Binary search uses `left`, `right`, and `middle` to shrink the search area.
+* Bubble sort compares neighboring elements and swaps them if they are in the wrong order.
+* Selection sort finds the minimum element in the unsorted part of the array and moves it into position.
+* A swap can be done using a temporary variable.
+* Recursion needs a base case to stop.
+* The recursive case calls the same function with a smaller or simpler input.
+
+### Complexity notes
+
+```text
+Binary search      — O(log n)
+Bubble sort        — O(n²)
+Selection sort     — O(n²)
+Merge sort         — O(n log n)
+```
+
+### Current practice status
+
+I can now write and test small C programs using:
+
+* binary search;
+* bubble sort;
+* selection sort;
+* recursion;
+* helper functions;
+* nested loops;
+* array traversal;
+* basic algorithm complexity reasoning.
+
+### Next practice goals
+
+* merge two already sorted arrays;
+* later implement a simple merge sort demo;
+* practice compiler warning flags;
+* trace algorithm variables manually while programs run.

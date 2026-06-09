@@ -36,6 +36,7 @@ cs50/
     01-c-basics/
     02-loops-functions-shapes/
     03-arrays-strings-search/
+    04-algorithms/
 linux/
 git/
 bash/

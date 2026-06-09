@@ -16,6 +16,10 @@ cs50/practice/**/rectangle_function
 cs50/practice/**/mario_stairs
 cs50/practice/**/better_mario_stairs
 cs50/practice/**/mario_pyramid
+cs50/practice/**/binary_search
+cs50/practice/**/bubble_sort
+cs50/practice/**/selection_sort
+cs50/practice/**/recursion_countdown
 
 # C build artifacts
 *.o

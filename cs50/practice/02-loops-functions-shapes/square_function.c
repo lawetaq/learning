@@ -17,7 +17,7 @@ int main(void)
     do 
     {
         printf("Enter the size: ");
-        scanf("%i", size);
+        scanf("%i", &size);
     }
     while (size < 1);
 

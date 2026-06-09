@@ -728,3 +728,167 @@ I can now write small standard C programs using:
 * Improve input safety by checking the return value of `scanf`.
 * Refactor some programs into helper functions.
 * Continue with the next CS50 topic after debugging practice.
+
+## 2026-06-09
+
+### Current position
+
+Topic: CS50 Algorithms basics
+Practice approach: learned the core ideas through small standard C programs before watching the full lecture section.
+
+### Completed so far
+
+* Started practicing the CS50 Algorithms topic.
+* Focused on understanding the main algorithm ideas through code.
+* Created a new practice block:
+
+  * `cs50/practice/04-algorithms/`
+* Wrote and tested several C programs:
+
+  * `binary_search.c`
+  * `bubble_sort.c`
+  * `selection_sort.c`
+  * `recursion_countdown.c`
+
+### Topics practiced
+
+* binary search;
+* sorted arrays;
+* left and right search boundaries;
+* middle index calculation;
+* bubble sort;
+* selection sort;
+* swapping array elements with a temporary variable;
+* nested loops;
+* recursion;
+* base case;
+* recursive case;
+* basic algorithm complexity ideas:
+
+  * `O(log n)`
+  * `O(n²)`
+  * `O(n log n)`
+
+### Programs written
+
+#### `binary_search.c`
+
+A program that searches for a target number in a sorted integer array using binary search.
+
+Practiced:
+
+* binary search on sorted data;
+* tracking the search area with `left` and `right`;
+* calculating the middle index;
+* moving the right boundary when the middle value is too large;
+* moving the left boundary when the middle value is too small;
+* using a `found` flag;
+* printing `Not found` only after the loop finishes.
+
+Important mistakes fixed:
+
+* incorrect array length;
+* moving the wrong boundary;
+* accidentally writing `if (found == 0);`, which makes the condition useless.
+
+#### `bubble_sort.c`
+
+A program that sorts an integer array using bubble sort.
+
+Practiced:
+
+* nested loops;
+* comparing neighboring elements;
+* swapping two values with a temporary variable;
+* understanding that after each outer loop pass, the largest unsorted value moves to the right;
+* using a helper function to print an array.
+
+Important mistakes fixed:
+
+* typos in `length`;
+* using commas instead of semicolons in a `for` loop;
+* missing quotation marks in `printf("\n")`;
+* passing function arguments with `;` instead of `,`.
+
+#### `selection_sort.c`
+
+A program that sorts an integer array using selection sort.
+
+Practiced:
+
+* finding the minimum element in the unsorted part of an array;
+* storing the index of the current minimum;
+* checking the rest of the array;
+* updating `min_index` when a smaller value is found;
+* doing one swap after the inner loop finishes.
+
+Important mistakes fixed:
+
+* forgetting to declare `min_index`;
+* placing the swap inside the inner loop too early;
+* using `min_index = 1` instead of `min_index = i`.
+
+#### `recursion_countdown.c`
+
+A simple recursive countdown program.
+
+Practiced:
+
+* recursion;
+* function prototypes;
+* base case;
+* recursive case;
+* using `return` to stop recursion;
+* understanding repeated function calls.
+
+### Algorithm complexity notes
+
+Basic takeaways:
+
+```text
+Binary search      — O(log n)
+Bubble sort        — O(n²)
+Selection sort     — O(n²)
+Merge sort         — O(n log n)
+```
+
+Important understanding:
+
+* `O(n²)` algorithms are simple but become slow on large inputs.
+* `O(log n)` is very fast, but binary search requires sorted data.
+* `O(n log n)` is generally much better than `O(n²)` for large sorting tasks.
+* Merge sort is faster than bubble sort and selection sort on large arrays, but it is conceptually more complex.
+* Bubble sort and selection sort are still useful for learning because they make comparisons, loops, and swaps very clear.
+
+### Current status
+
+I can now write small C programs that demonstrate:
+
+* binary search;
+* bubble sort;
+* selection sort;
+* recursive countdown;
+* array printing with helper functions;
+* swapping values;
+* nested loops;
+* search boundaries;
+* base case and recursive case.
+
+### Why this matters for DevOps
+
+* Algorithms improve general problem-solving skills.
+* Search logic is useful for working with logs, lists, files, and command output.
+* Sorting and comparison logic helps with data processing.
+* Recursion helps understand how problems can be broken into smaller versions of the same problem.
+* Complexity thinking helps avoid inefficient scripts and tools later.
+
+### Next
+
+* Write `merge_sorted_arrays_demo.c`.
+* Later write `merge_sort_demo.c`.
+* Practice compiler warning flags:
+
+  * `-Wall`
+  * `-Wextra`
+  * `-Werror`
+* Practice tracing how `left`, `right`, `middle`, `i`, `j`, and `min_index` change during algorithm execution.

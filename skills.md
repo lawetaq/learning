@@ -31,6 +31,10 @@
 | CS50 / C | C strings | 2 | Wrote string length and uppercase programs using `char` arrays and `fgets` | Continue deeper string handling |
 | CS50 / C | Command-line arguments | 1 | Wrote `greet_args.c` using `argc` and `argv` | Practice more CLI-style programs |
 | CS50 / C | Linear search | 2 | Wrote `search_score.c` and `search_name.c` | Compare with binary search later |
+| CS50 / C | Binary search | 2 | Wrote `binary_search.c` using `left`, `right`, and `middle` boundaries | Practice tracing search steps manually |
+| CS50 / C | Sorting basics | 2 | Wrote `bubble_sort.c` and `selection_sort.c` | Learn merge sort later |
+| CS50 / C | Recursion basics | 1 | Wrote `recursion_countdown.c` with base case and recursive case | Practice more recursive examples |
+| CS50 / C | Algorithm complexity basics | 1 | Compared `O(log n)`, `O(n²)`, and `O(n log n)` at a basic level | Connect complexity notes to real code examples |
 | CS50 / C | Caesar cipher | 2 | Built `caesar_simple.c` with character arithmetic and `% 26` | Refactor and improve input handling |
 | Networking | SSH tunneling | 2 | Accessed Uptime Kuma and personal site through local SSH tunnels | Use tunnels for internal admin services |
 | Networking | VPN troubleshooting | 1 | Tested VLESS/Reality, Hiddify, Nekoray, and AmneziaVPN routing behavior | Study routing, TUN mode, and firewall basics |
@@ -39,7 +43,7 @@
 | Docker         | Docker basics            |     2 | Ran nginx and Uptime Kuma containers with port mapping and bind mounts | Learn Docker Compose through a test service  |
 | Docker         | Docker networking basics |     1 | Practiced public and local-only port bindings                          | Study Docker networks and gateway behavior   |
 | Docker         | Docker Compose basics | 2 | Created first Compose project for a local-only nginx static site | Convert Uptime Kuma to Compose later |
- Docker | Docker networks | 1 | Connected Uptime Kuma to the personal-site Docker network for internal monitoring | Study Docker network types |
+| Docker | Docker networks | 1 | Connected Uptime Kuma to the personal-site Docker network for internal monitoring | Study Docker network types |
 | Monitoring     | Uptime Kuma              |     2 | Deployed Uptime Kuma and added basic monitors                          | Add notifications and monitor more services  |
 | Security       | SSH security basics      |     1 | Installed fail2ban and checked SSH logs for bot attempts               | Configure SSH keys and review firewall later |
 | Backups        | Basic service backups    |     1 | Created Uptime Kuma tar backups and documented restore logic           | Test restore and copy backups off-server     |

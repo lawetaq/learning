@@ -338,3 +338,34 @@
 * Test a slightly more complex but still safe sandbox task.
 * Continue using Git to review all agent-generated changes.
 * Keep Odysseus and Ollama local-only.
+
+## 2026-06-09
+
+### Done
+
+- Practiced CS50 Algorithms basics in standard C.
+- Created a new practice block:
+  - `cs50/practice/04-algorithms/`
+- Wrote and tested:
+  - `binary_search.c`
+  - `bubble_sort.c`
+  - `selection_sort.c`
+  - `recursion_countdown.c`
+
+### Practiced
+
+- binary search
+- bubble sort
+- selection sort
+- recursion
+- base case and recursive case
+- nested loops
+- swapping values
+- basic complexity ideas
+
+### Next
+
+- Add the algorithms practice summary to the repository.
+- Practice merge of two sorted arrays.
+- Later implement a simple merge sort demo.
+- Continue CS50 Algorithms lecture when ready.
