@@ -892,3 +892,39 @@ I can now write small C programs that demonstrate:
   * `-Wextra`
   * `-Werror`
 * Practice tracing how `left`, `right`, `middle`, `i`, `j`, and `min_index` change during algorithm execution.
+
+## 2026-06-12 — Independent Algorithms Practice
+
+Continued CS50 and started watching the Memory section.
+
+Also completed an independent C practice session focused on basic algorithms. Reimplemented several algorithms from memory:
+
+- linear search
+- minimum value search
+- maximum value search
+- sum of array elements
+- selection sort
+- bubble sort
+- binary search
+
+Main concepts practiced:
+
+- array traversal with `for` loops
+- accumulator variables
+- tracking minimum and maximum values
+- swapping values with a temporary variable
+- nested loops
+- helper functions such as `print_array`
+- sorting and searching logic
+- debugging small C mistakes
+
+Mistakes fixed:
+
+- used `i <= length` instead of `i < length`, which would access memory outside the array bounds;
+- forgot spaces in array printing, causing numbers to appear as one continuous sequence;
+- used the wrong comparison operator in bubble sort, producing descending order instead of ascending order;
+- accidentally wrote `(left = right) / 2` instead of `(left + right) / 2` in binary search.
+
+Outcome:
+
+Successfully practiced core algorithm patterns independently and improved confidence with arrays, loops, sorting, searching, and debugging in C.

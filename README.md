@@ -33,6 +33,7 @@ cs50/
   progress.md
   c-practice-summary.md
   practice/
+    00-self-practicing/
     01-c-basics/
     02-loops-functions-shapes/
     03-arrays-strings-search/
