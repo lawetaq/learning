@@ -20,6 +20,12 @@ cs50/practice/**/binary_search
 cs50/practice/**/bubble_sort
 cs50/practice/**/selection_sort
 cs50/practice/**/recursion_countdown
+cs50/practice/**/address_demo
+cs50/practice/**/pointer_demo
+cs50/practice/**/pointer_function
+cs50/practice/**/string_pointer
+cs50/practice/**/copy_string_bad
+cs50/practice/**/copy_string_good
 
 # C build artifacts
 *.o

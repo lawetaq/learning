@@ -19,7 +19,7 @@
 | Git | Git SSH authentication | 2 | Connected local PC to GitHub using SSH key | Use SSH workflow regularly |
 | Documentation | Markdown basics | 2 | Created README, progress, and skills files | Keep writing notes |
 | Linux | Linux basics | 1 | Previous Linux practice | Systematize notes |
-| Bash | Bash scripting | 0 | — | Write first script |
+| Bash | Bash scripting | 1 |  Watched Bash introduction and started roadmap.sh Bash course | Write first script |
 | CS50 / C | CS50 basics | 2 | Watched intro, Scratch, and early C section | Continue C section |
 | CS50 / C | C basics | 2 | Wrote and tested small C programs with variables, input, conditions, loops, and functions | Practice arrays and strings |
 | CS50 / C | C loops | 2 | Created counter, meow, column, row, square, rectangle, and stairs programs | Practice nested loops more |
@@ -36,6 +36,10 @@
 | CS50 / C | Recursion basics | 1 | Wrote `recursion_countdown.c` with base case and recursive case | Practice more recursive examples |
 | CS50 / C | Algorithm complexity basics | 1 | Compared `O(log n)`, `O(n²)`, and `O(n log n)` at a basic level | Connect complexity notes to real code examples |
 | CS50 / C | Caesar cipher | 2 | Built `caesar_simple.c` with character arithmetic and `% 26` | Refactor and improve input handling |
+| CS50 / C | C memory addresses | 1 | Wrote `address_demo.c` using `&` and `%p` | Practice more address/pointer examples |
+| CS50 / C | C pointers | 1 | Wrote `pointer_demo.c` and `pointer_function.c` using `int *p` and dereferencing | Practice pointer parameters and swapping |
+| CS50 / C | C string pointers | 1 | Wrote `string_pointer.c` and compared `s[i]` with `*(s + i)` | Continue string/pointer practice |
+| CS50 / C | Dynamic memory allocation | 1 | Wrote `copy_string_good.c` using `malloc` and `free` | Practice memory leaks and invalid access later |
 | Networking | SSH tunneling | 2 | Accessed Uptime Kuma and personal site through local SSH tunnels | Use tunnels for internal admin services |
 | Networking | VPN troubleshooting | 1 | Tested VLESS/Reality, Hiddify, Nekoray, and AmneziaVPN routing behavior | Study routing, TUN mode, and firewall basics |
 | Infrastructure | VPS basics               |     2 | Managed a Debian 12 VPS via SSH and documented server state            | Configure SSH keys and basic hardening       |

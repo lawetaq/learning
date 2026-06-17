@@ -38,6 +38,7 @@ cs50/
     02-loops-functions-shapes/
     03-arrays-strings-search/
     04-algorithms/
+    05-memory/
 linux/
 git/
 bash/

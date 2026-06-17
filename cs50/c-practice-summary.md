@@ -6,6 +6,7 @@
 - [`02-loops-functions-shapes`](practice/02-loops-functions-shapes/) — loops, functions, nested loops, Mario-style shapes
 - [`03-arrays-strings-search`](practice/03-arrays-strings-search/) — arrays, strings, command-line arguments, linear search, and Caesar cipher
 - [`04-algorithms`](practice/04-algorithms/) — binary search, sorting algorithms, and recursion
+- [`05-memory`](practice/05-memory/) — memory addresses, pointers, strings, malloc, and free
 
 ## Date
 
@@ -393,3 +394,71 @@ I can now write and test small C programs using:
 * later implement a simple merge sort demo;
 * practice compiler warning flags;
 * trace algorithm variables manually while programs run.
+
+## 2026-06-16 — Memory basics
+
+### Practice block
+
+Folder:
+
+```text
+practice/05-memory/
+```
+
+### Programs written
+
+* `address_demo.c` — prints variable values and memory addresses
+* `pointer_demo.c` — demonstrates basic pointer usage and dereferencing
+* `pointer_function.c` — changes a variable through a pointer passed to a function
+* `string_pointer.c` — demonstrates strings as addresses and pointer arithmetic
+* `copy_string_bad.c` — shows that copying a pointer copies an address, not the string data
+* `copy_string_good.c` — creates an independent string copy using `malloc` and `free`
+
+### New concepts practiced
+
+* memory addresses
+* address-of operator `&`
+* pointers
+* dereferencing with `*`
+* pointer parameters
+* strings as pointers
+* pointer arithmetic
+* copying addresses vs copying data
+* dynamic memory allocation
+* `malloc`
+* `free`
+* checking if `malloc` returned `NULL`
+
+### Important notes
+
+* A pointer stores a memory address.
+* `&x` gives the address of `x`.
+* `*p` accesses the value stored at the address inside `p`.
+* Strings in C are closely connected to memory addresses.
+* `char *t = s` copies the address, not the string data.
+* If two variables point to the same string data, changing one can affect the other.
+* Independent string copies require allocating new memory and copying the characters.
+* Memory allocated with `malloc` should be released with `free`.
+* `malloc` can fail, so its result should be checked against `NULL`.
+
+### Current practice status
+
+I can now write and test small C programs demonstrating:
+
+* memory addresses;
+* basic pointers;
+* pointer dereferencing;
+* passing pointers to functions;
+* strings as pointers;
+* the difference between copying a pointer and copying actual data;
+* basic dynamic memory allocation with `malloc`;
+* freeing allocated memory with `free`.
+
+### Next practice goals
+
+* practice more pointer examples;
+* learn common memory mistakes;
+* use compiler warnings more consistently;
+* try simple debugging tools later;
+* continue CS50 memory practice before moving to data structures.
+
