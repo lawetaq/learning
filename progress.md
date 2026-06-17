@@ -405,3 +405,66 @@ Mistakes fixed:
 Outcome:
 
 Successfully practiced core algorithm patterns independently and improved confidence with arrays, loops, sorting, searching, and debugging in C.
+
+## 2026-06-17
+
+### Done
+
+* Continued working on the Debian 12 VPS self-hosting lab.
+* Created a separate local Git repository for safe self-hosting configs and notes:
+
+  * `/opt/selfhost-configs`
+* Added safe documentation and example service files to the local VPS config repository.
+* Practiced Git workflow directly on the VPS:
+
+  * `git status`
+  * `git diff`
+  * `git add`
+  * `git commit`
+  * `git log --oneline`
+  * `git commit --amend`
+* Reviewed the difference between Git and GitHub.
+* Documented that the VPS config repository should not contain secrets, databases, backup archives, or VPN private configs.
+* Reviewed the current UFW firewall state.
+* Removed unused UFW allow rules for HTTP, HTTPS, and ispmanager.
+* Kept SSH allowed.
+* Verified that SSH still worked after firewall cleanup.
+* Verified that the AmneziaWG VPN still worked after firewall cleanup.
+
+### Practiced
+
+* Git on a server
+* local Git repositories
+* infrastructure documentation
+* safe config tracking
+* `.gitignore` for self-hosting configs
+* UFW firewall review
+* firewall rule cleanup
+* checking active services before changing firewall rules
+* understanding Docker-managed iptables rules
+* safer infrastructure change workflow
+
+### Problems / Risks
+
+* Existing firewall rules may come from a VPS image, provider setup, or server management panel.
+* Docker services may use Docker-managed iptables rules instead of normal UFW allow rules.
+* Blindly resetting UFW or flushing iptables could break Docker networking or VPN access.
+* A self-hosting config repository could accidentally include secrets if not carefully filtered.
+
+### Solved / Understood
+
+* Git can be useful locally on a server even without GitHub.
+* GitHub should only be used for VPS configs after checking that no secrets are included.
+* Public learning summaries and private real configs should be separated.
+* Minimal firewall allow rules are safer than leaving unused ports open.
+* SSH should be tested from a new terminal after firewall changes.
+* Docker and UFW must be handled carefully together.
+
+### Next
+
+* Create backups for Uptime Kuma, personal site files, and safe configs.
+* Copy important backups from the VPS to the local PC.
+* Later create a private GitHub repository for safe VPS configs.
+* Review whether LLMNR on port `5355` should be disabled.
+* Later configure domain, DNS, reverse proxy, and HTTPS.
+* Later convert more services to Docker Compose.

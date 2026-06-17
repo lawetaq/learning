@@ -1010,3 +1010,240 @@ AmneziaWG:
 * Later configure a domain, DNS, reverse proxy, and HTTPS.
 * Later create a normal sudo user and disable direct root SSH login.
 * Later configure firewall carefully.
+
+## 2026-06-17 — Git for Safe VPS Configs and Firewall Cleanup
+
+### Goal
+
+Continue improving the Debian 12 VPS self-hosting lab by:
+
+* creating a separate local Git repository for safe self-hosting configs and notes;
+* practicing basic Git workflow on the VPS;
+* documenting the current server state;
+* reviewing existing firewall rules;
+* removing unused firewall allow rules;
+* avoiding changes that could break SSH, Docker, or the VPN service.
+
+### Starting state
+
+The VPS already had several services and tools configured:
+
+* Docker;
+* Docker Compose;
+* AmneziaWG VPN in Docker;
+* Uptime Kuma monitoring;
+* a simple static personal site served by nginx;
+* SSH key-based access;
+* fail2ban for SSH protection.
+
+Important safety goal:
+
+* preserve SSH access;
+* preserve the existing VPN service;
+* avoid blindly changing Docker or firewall rules.
+
+---
+
+### Local Git repository for safe configs
+
+A separate local Git repository was created on the VPS:
+
+```text
+/opt/selfhost-configs
+```
+
+The repository is intended to store only safe configuration files and notes, such as:
+
+* README files;
+* documentation;
+* safe Docker Compose files;
+* static website files;
+* service notes.
+
+The repository should not contain:
+
+* SSH private keys;
+* passwords;
+* tokens;
+* `.env` files with secrets;
+* service databases;
+* backup archives;
+* VPN private configs.
+
+Initial repository structure:
+
+```text
+/opt/selfhost-configs/
+├── README.md
+├── .gitignore
+├── docs/
+│   ├── server-state.md
+│   ├── git-notes.md
+│   └── firewall-plan.md
+└── services/
+    └── personal-site/
+        ├── docker-compose.yml
+        └── html/
+            └── index.html
+```
+
+The personal site files were copied into this repository as safe examples.
+
+The actual running service files remained in their original location.
+
+---
+
+### Git workflow practiced
+
+Basic Git workflow was practiced directly on the VPS:
+
+```bash
+git status
+git diff
+git add
+git commit
+git log --oneline
+git commit --amend
+```
+
+Concepts reviewed:
+
+* working tree;
+* staging area;
+* commit;
+* local repository;
+* difference between Git and GitHub;
+* difference between `git commit` and `git push`.
+
+A typo in a commit message was corrected with:
+
+```bash
+git commit --amend -m "Add basic Git workflow notes"
+```
+
+Important note:
+
+* Git was used locally on the VPS.
+* GitHub was not required for this step.
+* A private GitHub repository may be created later for safe self-hosting configs.
+
+Current plan:
+
+* keep the main `learning` repository public;
+* use a separate private repository later for safe VPS configs;
+* add only cleaned learning summaries to the public `learning` repository.
+
+---
+
+### Firewall review
+
+UFW was already installed and active on the VPS.
+
+It was not installed from scratch during this session. The existing firewall configuration likely came from the VPS image, provider setup, or server management panel.
+
+Initial UFW policy:
+
+```text
+incoming: deny
+outgoing: allow
+routed: deny
+```
+
+Initial allowed rules included:
+
+* SSH;
+* HTTP;
+* HTTPS;
+* ispmanager.
+
+After checking active services, some allowed rules were found to be unnecessary.
+
+---
+
+### Firewall cleanup
+
+Unused UFW allow rules were removed:
+
+* HTTP;
+* HTTPS;
+* ispmanager.
+
+The SSH allow rule was kept.
+
+Final UFW allow rules:
+
+* SSH over IPv4;
+* SSH over IPv6.
+
+The VPN service was not modified and continued working.
+
+SSH was tested from a new terminal after the firewall cleanup and still worked.
+
+The VPN was also tested and continued working.
+
+---
+
+### Docker firewall note
+
+Docker creates its own iptables rules for published container ports.
+
+Because of this, Docker services may not appear in the normal UFW allow list in the same way as regular host services.
+
+The AmneziaWG VPN port continued to work through Docker-managed firewall/NAT rules.
+
+Important safety rule:
+
+```text
+Do not blindly run commands such as `ufw reset` or `iptables -F` on a Docker-based VPS.
+```
+
+Reason:
+
+* these commands may break container networking;
+* they may break VPN access;
+* they can remove important Docker-managed firewall/NAT rules.
+
+---
+
+### Current security state after cleanup
+
+The server now has a cleaner firewall configuration:
+
+* UFW is active;
+* incoming traffic is denied by default;
+* outgoing traffic is allowed by default;
+* SSH remains allowed;
+* unused HTTP, HTTPS, and ispmanager allow rules were removed;
+* Uptime Kuma remains local-only;
+* the personal site remains local-only;
+* the VPN service continues to work.
+
+Current public exposure is intentionally minimal:
+
+```text
+22/tcp       SSH
+VPN UDP port managed by Docker / AmneziaWG
+```
+
+---
+
+### Lessons learned
+
+* Git is useful for tracking infrastructure notes and safe configuration files.
+* GitHub is optional and should only be used after checking that no secrets are included.
+* A clean `.gitignore` is important for self-hosting repositories.
+* Firewall rules should be reviewed before changing them.
+* Existing firewall configurations may come from a VPS image, provider setup, or control panel.
+* Docker can manage its own iptables rules, so Docker and UFW must be handled carefully together.
+* Before firewall changes, it is important to keep an active SSH session open and verify SSH key login.
+* Minimal allow rules are safer than leaving unused ports open.
+* Infrastructure changes should be documented and committed.
+
+### Next possible steps
+
+* Create proper backups for Uptime Kuma, personal site files, and safe configs.
+* Copy important backups from the VPS to the local PC.
+* Create a private GitHub repository for safe self-hosting configs.
+* Review whether LLMNR on port `5355` should be disabled.
+* Later configure a domain, reverse proxy, and HTTPS.
+* Later convert more services to Docker Compose.

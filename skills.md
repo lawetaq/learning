@@ -17,7 +17,9 @@
 | Git | GitHub basics | 1 | Created repository | Learn Git locally |
 | Git | Git basic workflow | 3 | Regularly used `status`, `diff`, `add`, `commit`, and `push` | Practice `pull` and `restore` |
 | Git | Git SSH authentication | 2 | Connected local PC to GitHub using SSH key | Use SSH workflow regularly |
+| Git | Git on server | 2 | Practiced status, diff, add, commit, log, and commit --amend on the VPS | Practice branching and remote private repos later |
 | Documentation | Markdown basics | 2 | Created README, progress, and skills files | Keep writing notes |
+| Documentation | Infrastructure notes | 2 | Documented server state, firewall plan, and Git notes for self-hosting configs | Keep docs updated after each infrastructure change |
 | Linux | Linux basics | 1 | Previous Linux practice | Systematize notes |
 | Bash | Bash scripting | 1 |  Watched Bash introduction and started roadmap.sh Bash course | Write first script |
 | CS50 / C | CS50 basics | 2 | Watched intro, Scratch, and early C section | Continue C section |
@@ -43,15 +45,18 @@
 | Networking | SSH tunneling | 2 | Accessed Uptime Kuma and personal site through local SSH tunnels | Use tunnels for internal admin services |
 | Networking | VPN troubleshooting | 1 | Tested VLESS/Reality, Hiddify, Nekoray, and AmneziaVPN routing behavior | Study routing, TUN mode, and firewall basics |
 | Infrastructure | VPS basics               |     2 | Managed a Debian 12 VPS via SSH and documented server state            | Configure SSH keys and basic hardening       |
+| Infrastructure | SSH key authentication | 2 | Created a dedicated SSH key, configured SSH alias, and logged into VPS using the key | Back up key securely before OS reinstall |
 | Infrastructure | Self-hosting basics      |     2 | Created `/opt/selfhost` structure and deployed first services          | Add personal static site                     |
+| Infrastructure | Safe config tracking | 1 | Created a local Git repository on the VPS for safe self-hosting configs and notes | Later create a private remote repository after checking for secrets |
 | Docker         | Docker basics            |     2 | Ran nginx and Uptime Kuma containers with port mapping and bind mounts | Learn Docker Compose through a test service  |
 | Docker         | Docker networking basics |     1 | Practiced public and local-only port bindings                          | Study Docker networks and gateway behavior   |
 | Docker         | Docker Compose basics | 2 | Created first Compose project for a local-only nginx static site | Convert Uptime Kuma to Compose later |
 | Docker | Docker networks | 1 | Connected Uptime Kuma to the personal-site Docker network for internal monitoring | Study Docker network types |
 | Monitoring     | Uptime Kuma              |     2 | Deployed Uptime Kuma and added basic monitors                          | Add notifications and monitor more services  |
-| Security       | SSH security basics      |     1 | Installed fail2ban and checked SSH logs for bot attempts               | Configure SSH keys and review firewall later |
-| Backups        | Basic service backups    |     1 | Created Uptime Kuma tar backups and documented restore logic           | Test restore and copy backups off-server     |
-| Infrastructure | SSH key authentication | 2 | Created a dedicated SSH key, configured SSH alias, and logged into VPS using the key | Back up key securely before OS reinstall |
-| Security | SSH password login hardening | 2 | Disabled password-based SSH login and verified it with `sshd -T` and forced password test | Create sudo user and later disable direct root login |
 | Monitoring | Internal service monitoring | 2 | Monitored local-only personal site from Uptime Kuma using container name | Add notifications later |
+| Security       | SSH security basics      |     1 | Installed fail2ban and checked SSH logs for bot attempts               | Configure SSH keys and review firewall later |
+| Security | SSH password login hardening | 2 | Disabled password-based SSH login and verified it with `sshd -T` and forced password test | Create sudo user and later disable direct root login |
+| Security | Firewall cleanup | 2 | Reviewed UFW rules and removed unused HTTP, HTTPS, and ispmanager allow rules | Review LLMNR and firewall behavior with Docker |
+| Security | Docker and firewall awareness | 1 | Learned that Docker manages its own iptables rules and should not be handled blindly with UFW reset or iptables flush | Study Docker networking and UFW interaction deeper |
+| Backups        | Basic service backups    |     1 | Created Uptime Kuma tar backups and documented restore logic           | Test restore and copy backups off-server     |
 | Web | Static site hosting basics | 1 | Served a simple static page with nginx in Docker Compose | Add reverse proxy, domain, and HTTPS later |
