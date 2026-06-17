@@ -10,8 +10,6 @@ This folder contains my CS50x learning notes, C practice programs, and progress 
 
 ## Practice Blocks
 
-## Practice Blocks
-
 - `00-self-practicing/` — writing code independetly
 - `practice/01-c-basics/` — basic C syntax, input, conditions, and strings
 - `practice/02-loops-functions-shapes/` — loops, functions, nested loops, and terminal shapes

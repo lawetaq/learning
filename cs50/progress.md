@@ -928,3 +928,35 @@ Mistakes fixed:
 Outcome:
 
 Successfully practiced core algorithm patterns independently and improved confidence with arrays, loops, sorting, searching, and debugging in C.
+
+## 2026-06-16 — CS50 Memory Practice
+
+Finished the CS50 Memory lecture section and started practicing core C memory concepts.
+
+Created small standard C programs for:
+
+- printing variable values and memory addresses with `&` and `%p`;
+- using pointers with `int *p`;
+- dereferencing pointers with `*p`;
+- changing a variable through a pointer;
+- passing a variable address to a function;
+- understanding strings as addresses of characters;
+- comparing `s[i]` with `*(s + i)`;
+- demonstrating that `char *t = s` copies an address, not a string;
+- creating an independent string copy with `malloc`, manual copying, and `free`.
+
+Main concepts practiced:
+
+- stack variables;
+- read-only string literals;
+- pointers;
+- dereferencing;
+- pointer arithmetic;
+- copying addresses vs copying data;
+- dynamic memory allocation;
+- checking `malloc` result against `NULL`;
+- freeing allocated memory.
+
+Important takeaway:
+
+If two pointers store the same address, they refer to the same data. To create an independent copy, a new memory area must be allocated and the data must be copied into it.
