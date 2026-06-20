@@ -90,6 +90,20 @@ Practiced concepts:
 * `exit 0`, `exit 1`, `exit 2`
 * simple CLI help with `--help`
 
+### `memory-check.sh`
+
+A small memory usage check script.
+
+It checks current RAM usage and compares it with a configurable limit.
+
+Example usage:
+
+```bash
+./memory-check.sh
+./memory-check.sh 70
+./memory-check.sh 90
+./memory-check.sh --help
+
 ## Notes
 
 `chmod +x` is used to make a script executable.
@@ -112,11 +126,31 @@ Without execute permission, the script can still be run by explicitly passing it
 bash scripts/disk-check.sh
 ```
 
+## Exit codes
+
+* 0 = OK
+* 1 = WARNING: memory usage is above or equal to the limit
+* 2 = ERROR: invalid argument
+
+## Practiced concepts:
+
+* free
+* awk
+* arithmetic expansion with $(( ... ))
+* script argument $1
+* default values
+* if
+* [ ]
+* [[ ]]
+* regex validation
+* numeric comparison with -ge
+* exit 0, exit 1, exit 2
+* simple CLI help with --help
+
 ## Next Steps
 
 Planned scripts:
 
-* `memory-check.sh`
 * `server-status.sh`
 * `docker-status.sh`
 * `check-ports.sh`
