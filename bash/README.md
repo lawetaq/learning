@@ -147,11 +147,34 @@ bash scripts/disk-check.sh
 * exit 0, exit 1, exit 2
 * simple CLI help with --help
 
+### `server-status.sh`
+
+A simple system status summary script.
+
+It prints basic system information and runs existing check scripts.
+
+It shows:
+
+- hostname;
+- current date and time;
+- uptime;
+- disk check result;
+- memory check result.
+
+Practiced concepts:
+
+- calling one script from another script;
+- command substitution;
+- `hostname`;
+- `date`;
+- `uptime`;
+- portable script paths with `dirname "$0"`;
+- using a `script_dir` variable.
+
 ## Next Steps
 
 Planned scripts:
 
-* `server-status.sh`
 * `docker-status.sh`
 * `check-ports.sh`
 * `ssh-log-summary.sh`
