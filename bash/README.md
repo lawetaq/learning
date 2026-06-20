@@ -171,6 +171,51 @@ Practiced concepts:
 - portable script paths with `dirname "$0"`;
 - using a `script_dir` variable.
 
+### `service-list.sh`
+
+A simple service status check script.
+
+It checks a small list of systemd services and prints whether each service is active, inactive, or missing.
+
+Example usage:
+
+```bash
+./service-list.sh
+```
+
+Example output:
+
+```text
+OK: NetworkManager is active
+WARNING: sshd is inactive
+OK: docker is active
+```
+
+Practiced concepts:
+
+* Bash arrays;
+* `for` loops;
+* `if`, `elif`, `else`;
+* string comparison with `=`;
+* checking systemd units with `systemctl cat`;
+* checking service status with `systemctl is-active`;
+* hiding command output with `>/dev/null 2>&1`;
+* using `continue` inside a loop;
+* basic service monitoring logic.
+
+Notes:
+
+`systemctl is-active` checks whether a service is currently active, but it does not always clearly show whether a unit exists.
+For this reason, the script first checks the unit with `systemctl cat`.
+
+Current checked services:
+
+```text
+NetworkManager
+sshd
+docker
+```
+
 ## Next Steps
 
 Planned scripts:
