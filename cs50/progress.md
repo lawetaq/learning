@@ -960,3 +960,342 @@ Main concepts practiced:
 Important takeaway:
 
 If two pointers store the same address, they refer to the same data. To create an independent copy, a new memory area must be allocated and the data must be copied into it.
+
+## 2026-06-26 — CS50 Data Structures Practice
+
+Continued CS50 practice after finishing the **Data Structures** section.
+
+This topic felt noticeably harder than the previous ones, especially because it combines several difficult C concepts at once: `struct`, pointers, `malloc`, linked nodes, traversal, and manual memory cleanup. I spent more time on this section than expected, but it helped me understand how data structures are built manually in C.
+
+Working directory:
+
+```bash
+~/Projects/learning/cs50/practice/06-data-structures
+```
+
+## Programs completed
+
+Implemented the following small C programs:
+
+* `student_struct.c`
+* `students_array.c`
+* `node_create.c`
+* `linked_list_two_nodes.c`
+* `linked_list_insert_front.c`
+* `linked_list_print_free.c`
+* `linked_list_search.c`
+* `linked_list_insert_sorted.c`
+
+## Main concepts practiced
+
+### Structs
+
+Practiced creating custom data types with `typedef struct`.
+
+Example:
+
+```c
+typedef struct
+{
+    char name[100];
+    int age;
+}
+student;
+```
+
+Learned how to:
+
+* define a structure;
+* create a variable of a custom struct type;
+* access fields with `.`;
+* copy strings into struct fields with `strcpy`;
+* create arrays of structs.
+
+### Nodes
+
+Practiced creating a linked list node:
+
+```c
+typedef struct node
+{
+    int number;
+    struct node *next;
+}
+node;
+```
+
+Main idea:
+
+```text
+A node stores data and a pointer to the next node.
+```
+
+### malloc and free
+
+Practiced allocating memory for nodes with:
+
+```c
+node *n = malloc(sizeof(node));
+```
+
+and checking for allocation failure:
+
+```c
+if (n == NULL)
+{
+    return 1;
+}
+```
+
+Also practiced freeing dynamically allocated memory with:
+
+```c
+free(n);
+```
+
+and later freeing an entire linked list with a loop.
+
+### Linked lists
+
+Built linked lists step by step:
+
+1. Created one node.
+2. Created two linked nodes manually.
+3. Inserted nodes at the front of a list.
+4. Printed a linked list.
+5. Freed a linked list.
+6. Searched for a value in a linked list.
+7. Inserted values into a linked list while keeping it sorted.
+
+## Programs
+
+### `student_struct.c`
+
+Created a single `student` struct, filled its fields, and printed them.
+
+Practiced:
+
+* `typedef struct`;
+* struct fields;
+* `strcpy`;
+* accessing fields with `.`.
+
+### `students_array.c`
+
+Created an array of `student` structs and printed all students in a loop.
+
+Practiced:
+
+* arrays of structs;
+* accessing fields with `students[i].name` and `students[i].age`;
+* looping over structured data.
+
+### `node_create.c`
+
+Created one linked list node using `malloc`.
+
+Practiced:
+
+* `struct node`;
+* `node *`;
+* `malloc(sizeof(node))`;
+* `n->number`;
+* `n->next = NULL`;
+* `free(n)`.
+
+Important mistake fixed:
+
+Originally tried to print `*n` with `%i`, but `*n` is the whole structure, not an integer. The correct expression is:
+
+```c
+n->number
+```
+
+### `linked_list_two_nodes.c`
+
+Created two nodes and connected them:
+
+```text
+first -> second -> NULL
+```
+
+Practiced:
+
+* linking nodes with `next`;
+* accessing the second node through `first->next`;
+* freeing both nodes.
+
+### `linked_list_insert_front.c`
+
+Inserted nodes at the front of a linked list.
+
+Example insertion order:
+
+```text
+10, 20, 30
+```
+
+Final list:
+
+```text
+30 -> 20 -> 10 -> NULL
+```
+
+Key pattern:
+
+```c
+n->next = list;
+list = n;
+```
+
+Practiced:
+
+* maintaining a `list` pointer;
+* inserting new nodes at the beginning;
+* traversing a linked list;
+* freeing the full list safely.
+
+### `linked_list_print_free.c`
+
+Moved linked list printing and freeing into helper functions:
+
+```c
+void print_list(node *list);
+void free_list(node *list);
+```
+
+Practiced:
+
+* function prototypes;
+* passing a linked list pointer to functions;
+* traversing a linked list in a function;
+* freeing all nodes safely.
+
+Important pattern:
+
+```c
+node *next = ptr->next;
+free(ptr);
+ptr = next;
+```
+
+The next pointer must be saved before freeing the current node.
+
+### `linked_list_search.c`
+
+Added search functionality to a linked list.
+
+Function:
+
+```c
+int search_list(node *list, int target);
+```
+
+Returns:
+
+```text
+1 if found
+0 if not found
+```
+
+Practiced:
+
+* linear search in a linked list;
+* returning values from helper functions;
+* checking each node with `ptr->number`;
+* moving through the list with `ptr = ptr->next`.
+
+### `linked_list_insert_sorted.c`
+
+Implemented sorted insertion into a linked list.
+
+Input values:
+
+```c
+int values[] = {5, 1, 9, 3};
+```
+
+Output:
+
+```text
+1
+3
+5
+9
+```
+
+Practiced:
+
+* using `previous` and `current` pointers;
+* finding the correct insertion position;
+* inserting at the beginning;
+* inserting in the middle;
+* inserting at the end;
+* preserving links between nodes.
+
+Key traversal logic:
+
+```c
+while (current != NULL && current->number < n->number)
+{
+    previous = current;
+    current = current->next;
+}
+```
+
+Key insertion logic:
+
+```c
+if (previous == NULL)
+{
+    n->next = list;
+    list = n;
+}
+else
+{
+    previous->next = n;
+    n->next = current;
+}
+```
+
+## Important takeaways
+
+* A `struct` lets me group related data into one custom type.
+* A linked list node stores both data and a pointer to the next node.
+* `malloc` is used to create nodes dynamically.
+* Every successful `malloc` should eventually have a matching `free`.
+* `->` is used to access fields through a pointer to a struct.
+* `list` usually points to the first node of a linked list.
+* `NULL` marks the end of a linked list.
+* Traversing a linked list means repeatedly moving from one node to the next.
+* Inserting into a linked list requires careful pointer updates.
+* The order of pointer assignments matters a lot.
+* Sorted insertion is more difficult because it requires tracking both `previous` and `current`.
+
+## Current status
+
+I completed the basic linked list practice block and now understand the core ideas behind manually built data structures in C:
+
+* structs;
+* nodes;
+* pointers to structs;
+* linked list traversal;
+* inserting nodes;
+* searching nodes;
+* freeing linked list memory;
+* sorted insertion.
+
+This section was harder than previous CS50 topics and took more time than expected, but it was useful because it connected Memory concepts with real data structures.
+
+## Possible next steps
+
+After resting, good next topics are:
+
+1. `stack_array.c` — stack implemented with an array.
+2. `stack_linked_list.c` — stack implemented with a linked list.
+3. `queue_array_simple.c` — simple queue.
+4. `queue_linked_list.c` — queue with `front` and `rear`.
+5. `binary_tree_manual.c` — manually created binary tree.
+6. `binary_tree_search.c` — search in a binary search tree.
+7. `hash_function_demo.c` — simple hash function.
+8. `hash_table_simple.c` — basic hash table with linked lists.
