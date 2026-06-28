@@ -1247,3 +1247,134 @@ VPN UDP port managed by Docker / AmneziaWG
 * Review whether LLMNR on port `5355` should be disabled.
 * Later configure a domain, reverse proxy, and HTTPS.
 * Later convert more services to Docker Compose.
+
+# Self-Hosted VPS Progress: Uptime Kuma Compose Migration and Telegram Alerts
+
+## Context
+
+This summary documents a self-hosting practice session on a Debian 12 VPS used for DevOps learning.
+
+The server already had:
+
+* Docker
+* Docker Compose
+* AmneziaWG VPN in Docker
+* Uptime Kuma monitoring
+* A static personal site served by nginx
+* SSH key-based access
+* UFW firewall
+* fail2ban for SSH protection
+* a private Git repository for safe VPS configs
+
+The goal of this session was to improve service reproducibility and alerting.
+
+## Main Goals
+
+* Migrate Uptime Kuma from a manually created Docker container to Docker Compose.
+* Preserve existing Uptime Kuma data and monitors.
+* Keep Uptime Kuma local-only.
+* Keep the personal site monitor working through the existing Docker network.
+* Configure Telegram notifications for important monitors.
+* Document and commit the safe configuration changes.
+
+## Uptime Kuma Migration to Docker Compose
+
+Before migration, Uptime Kuma was running as a manually created Docker container.
+
+Important existing settings were checked first:
+
+* Image: `louislam/uptime-kuma:1`
+* Restart policy: `unless-stopped`
+* Bind address: `127.0.0.1:3001`
+* Data directory: `/opt/selfhost/uptime-kuma/data`
+* Additional Docker network: `personal-site_default`
+
+A fresh backup was created before changing the container startup method.
+
+The old Uptime Kuma container was stopped and removed, but the persistent data directory was kept.
+
+A new `docker-compose.yml` was created for Uptime Kuma, using the same data directory and local-only port binding.
+
+The service was then started with Docker Compose.
+
+After migration:
+
+* Uptime Kuma started successfully.
+* The container became healthy.
+* Existing monitors and data were preserved.
+* The service stayed local-only on `127.0.0.1:3001`.
+* The connection to the `personal-site_default` Docker network was preserved.
+* The personal site monitor continued working.
+
+## Telegram Alerts
+
+Telegram notifications were configured inside Uptime Kuma.
+
+A Telegram bot was created using BotFather.
+
+Uptime Kuma was configured with:
+
+* Telegram notification type
+* Bot token
+* Chat ID
+
+The bot token and chat ID were not committed to Git.
+
+Telegram test notifications were successfully received.
+
+Telegram alerts were enabled for:
+
+* SSH monitor
+* Personal Site monitor
+* Uptime Kuma self-check
+
+## Git and Documentation
+
+The Uptime Kuma Compose configuration was copied into the private `selfhost-configs` repository as a safe config example.
+
+Documentation was updated to describe:
+
+* Uptime Kuma Compose migration
+* persistent data directory
+* local-only access
+* Docker network connection
+* Telegram alert setup
+* security rules for Telegram secrets
+
+The changes were committed and pushed to the private GitHub repository.
+
+## Important Security Notes
+
+The following data must not be committed to public repositories:
+
+* Telegram bot token
+* Telegram chat ID
+* SSH private keys
+* passwords
+* VPN configs with private keys
+* Uptime Kuma database/data directory
+* backup archives
+
+Uptime Kuma remains local-only and is accessed through an SSH tunnel.
+
+## Lessons Learned
+
+* Docker Compose makes service startup reproducible and easier to document.
+* Persistent service data must be separated from disposable containers.
+* A container can be safely recreated if its data directory is preserved.
+* Backups should be created before service migration.
+* Uptime Kuma can monitor internal Docker services through shared Docker networks.
+* Telegram alerts make monitoring more useful because failures are delivered directly to the user.
+* Secrets should stay inside service settings or secret storage, not in Git.
+* Infrastructure changes should be documented and committed after testing.
+
+## Current Result
+
+After this session:
+
+* Uptime Kuma is managed by Docker Compose.
+* Uptime Kuma data was preserved.
+* Uptime Kuma remains local-only.
+* The personal site monitor works.
+* Telegram alert notifications work.
+* Safe configs and notes are stored in a private Git repository.
